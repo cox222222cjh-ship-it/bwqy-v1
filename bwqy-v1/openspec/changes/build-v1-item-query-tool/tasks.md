@@ -56,7 +56,7 @@
 - 有无结果状态
 - 有待确认标记
 
-## Task 6: Add Acceptance Cases
+## Task 6: Add Acceptance Cases ✅
 
 添加最小验收样例，覆盖：
 
