@@ -1,6 +1,6 @@
 # Tasks: build-v1-item-query-tool
 
-## Task 1: Freeze MVP Scope
+## Task 1: Freeze MVP Scope ✅
 
 根据当前 GSD 文档，冻结第一版范围，只保留：
 
@@ -17,7 +17,7 @@
 - 全量相关表位置
 - 多业务域入口
 
-## Task 2: Define Source Tables and Fields
+## Task 2: Define Source Tables and Fields ✅
 
 列出第一版必须依赖的主表与装备链路表，明确：
 
