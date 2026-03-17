@@ -72,6 +72,13 @@ def _to_raw_record(table_name: str, row: dict[str, str]) -> RawRecord:
     return RawRecord(table=table_name, values=values)
 
 
+def _empty_set_chain() -> dict[str, list[RawRecord]]:
+    return {
+        "ItemSetTable": [],
+        "ItemSetAbilityTable": [],
+    }
+
+
 def _collect_set_chain_rows(index: ItemQueryIndex, item_rows: Iterable[dict[str, str]]) -> dict[str, list[RawRecord]]:
     set_rows: list[RawRecord] = []
     ability_rows: list[RawRecord] = []
@@ -107,7 +114,7 @@ def query_item(index: ItemQueryIndex, query: str) -> ItemQueryResult:
             query_type="item_name",
             matched_items=[],
             candidates=[],
-            set_chain={"ItemSetTable": [], "ItemSetAbilityTable": []},
+            set_chain=_empty_set_chain(),
         )
 
     if q.isdigit():
@@ -146,11 +153,10 @@ def query_item(index: ItemQueryIndex, query: str) -> ItemQueryResult:
         )
 
     candidates = [_to_raw_record("ItemTable", row) for row in merged]
-    chain = _collect_set_chain_rows(index, merged)
     return ItemQueryResult(
         query=q,
         query_type="item_name",
         matched_items=[],
         candidates=candidates,
-        set_chain=chain,
+        set_chain=_empty_set_chain(),
     )
