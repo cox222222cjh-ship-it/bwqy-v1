@@ -2,7 +2,7 @@
 
 ## 1) 输入数据现状（基于已上传 table）
 
-当前仓库根目录已包含 `ItemTable.csv`、`ItemSetTable.csv`、`ItemSetAbilityTable.csv` 等表。
+当前仓库数据目录 `data/tables/` 已包含 `data/tables/ItemTable.csv`、`data/tables/ItemSetTable.csv`、`data/tables/ItemSetAbilityTable.csv` 等表。
 
 观察到这些 CSV 结构均包含“说明行/空行/类型行”，典型模式为：
 
@@ -18,17 +18,17 @@
 
 ### 2.1 主表（可信锚点）
 
-- `ItemTable.csv`
+- `data/tables/ItemTable.csv`
 - 主键：`TID`
 
 ### 2.2 装备链路最小关联表（仅一条高确定性链路）
 
-- `ItemSetTable.csv`
+- `data/tables/ItemSetTable.csv`
   - 作用：由套装/物品关系连接 `ItemTID` 与 `SetAbilityTID`
-- `ItemSetAbilityTable.csv`
+- `data/tables/ItemSetAbilityTable.csv`
   - 作用：给出套装能力触发条件（`ReqTotal`）与说明（`LocalDesc`）
 
-> 说明：v1 不引入 `ItemEnchantTable.csv`、`ItemBreakTable.csv`、`ProductItemTable.csv` 等更复杂链路，避免范围失控。
+> 说明：v1 不引入 `data/tables/ItemEnchantTable.csv`、`data/tables/ItemBreakTable.csv`、`data/tables/ProductItemTable.csv` 等更复杂链路，避免范围失控。
 
 ## 3) 字段职责划分
 

@@ -19,7 +19,7 @@
 - 支持两种输入：
   - 物品名称（`LocalName`）
   - 物品 ID（`TID`）
-- 查询命中优先基于物品主表（`ItemTable.csv`）。
+- 查询命中优先基于物品主表（`data/tables/ItemTable.csv`）。
 
 ### 2.2 结果展示（最小字段集）
 
