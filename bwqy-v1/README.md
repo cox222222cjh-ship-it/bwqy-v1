@@ -1,45 +1,47 @@
-# item-query-v1（Task 3）开发说明
+# item-query-v1（Task 5）本地运行说明
 
-## CSV 加载路径
+## 功能范围（v1）
 
-Task 3 的本地读取逻辑会从当前代码位置向上查找 `data/tables` 目录，命中后作为 CSV 根路径。
-在当前仓库结构下，实际路径为：
+当前实现严格按 OpenSpec Task 1~5 最小范围：
 
-- `data/tables/ItemTable.csv`
-- `data/tables/ItemSetTable.csv`
-- `data/tables/ItemSetAbilityTable.csv`
+- 仅支持物品名称 / 物品 ID 查询
+- 仅接入 `ItemTable`、`ItemSetTable`、`ItemSetAbilityTable`
+- 查询结果基于 Task 4 结果视图模型渲染
+- 仅提供本地只读 Web UI（无写操作、无网络依赖）
 
-## v1 已纳入表
+## 启动本地 Web UI
 
-仅包含 OpenSpec Task 2 约束的最小集合：
+在仓库根目录下执行：
 
-1. `ItemTable.csv`（可信锚点）
-2. `ItemSetTable.csv`（套装关联）
-3. `ItemSetAbilityTable.csv`（套装能力）
+```bash
+python -m item_query_v1.web_ui
+```
 
-并严格按规则跳过 CSV 第 2~4 行元信息，从第 5 行开始解析业务记录。
+默认监听：
 
-## 已建立的最小索引
+- `http://127.0.0.1:8000`
 
-- `ItemTable.TID` 的精确索引（ID 查询）
-- `ItemTable.LocalName` 的名称索引（主名称查询）
-- `ItemTable.EngName` 的辅助名称索引（英文键）
+## 页面行为
 
-## 返回结果结构（Task 3）
+页面包含以下最小区域：
 
-当前返回原始可追溯结构，供 Task 4 继续做展示映射：
+1. 查询输入区（一个输入框 + 一个查询按钮）
+2. 单结果详情区（仅五个允许 section）
+   - basic information
+   - classification
+   - source information
+   - trust status
+   - equipment chain
+3. 候选结果区（多命中时展示候选列表，不强制进入详情页）
+4. 无结果区
+5. 错误区（索引加载失败 / 查询异常）
 
-- 字段级来源：`source_table`、`source_field`
-- 字段原值：`raw_value`
-- 字段状态：`direct | derived | pending_confirmation`
+此外，`pending_confirmation` 会在页面中显式标识。
 
-Task 3 里，直接从 CSV 读到的字段统一标记为 `direct`。
+## 测试
 
-## 明确未实现（超出 v1 Task 3 范围）
+运行：
 
-- UI / 页面渲染
-- Task 4 结果展示模型的最终渲染适配
-- Task 5 Web 界面
-- 任务、礼包、强化链路、全量多域入口
-- 任意网络依赖或写回数据操作
-- 除上述三张表外的其他 CSV 扩展接入
+```bash
+python -m unittest discover -s tests
+```
