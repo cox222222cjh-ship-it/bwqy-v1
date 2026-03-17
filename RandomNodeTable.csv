@@ -1,0 +1,95 @@
+CharName,NodeName
+人物NIF姓名,节点名称
+2,2
+CBwString,CBwString
+00000.nif,Bone_Armor_Front01
+00000.nif,Bone_Armor_Front02
+00000.nif,Bone_Armor_Front03
+00000.nif,Bone_Armor_head
+00000.nif,Bone_Armor_L
+00000.nif,Bone_Armor_R
+00000.nif,Bone_Brows
+00000.nif,Bone_Eye
+00000.nif,Bone_Eye_down
+00000.nif,Bone_Eye_up
+00000.nif,Bone_hair01
+00000.nif,Bone_hair02
+00000.nif,Bone_hair03
+00000.nif,Bone_hair04
+00000.nif,Bone_Leye
+00000.nif,Bone_Manteau_L
+00000.nif,Bone_Manteau_R
+00000.nif,Bone_Manteau01
+00000.nif,Bone_Manteau02
+00000.nif,Bone_Manteau03
+00000.nif,Bone_Manteau04
+00000.nif,Bone_Reye
+00000.nif,Bone_Root
+00000.nif,Bone_Root NonAccum
+00000.nif,Bone_shoulder_L
+00000.nif,Bone_shoulder_R
+00000.nif,cname
+00000.nif,e2
+00000.nif,Prop_Spine
+00000.nif,RotateDummy
+00000.nif,RotateDummy2
+00000.nif,AcChar
+00000.nif,Attach Element Node
+00000.nif,Bip01
+00000.nif,Bip01 Head
+00000.nif,Bip01 HeadNub
+00000.nif,Bip01 L Calf
+00000.nif,Bip01 L Clavicle
+00000.nif,Bip01 L Finger0
+00000.nif,Bip01 L Finger01
+00000.nif,Bip01 L Finger02
+00000.nif,Bip01 L Finger0Nub
+00000.nif,Bip01 L Finger1
+00000.nif,Bip01 L Finger11
+00000.nif,Bip01 L Finger12
+00000.nif,Bip01 L Finger1Nub
+00000.nif,Bip01 L Finger2
+00000.nif,Bip01 L Finger21
+00000.nif,Bip01 L Finger22
+00000.nif,Bip01 L Finger2Nub
+00000.nif,Bip01 L Foot
+00000.nif,Bip01 L Forearm
+00000.nif,Bip01 L Hand
+00000.nif,Bip01 L Thigh
+00000.nif,Bip01 L Toe0
+00000.nif,Bip01 L Toe0Nub
+00000.nif,Bip01 L UpperArm
+00000.nif,Bip01 Neck
+00000.nif,Bip01 Pelvis
+00000.nif,Bip01 Prop_L
+00000.nif,Bip01 Prop_R
+00000.nif,Bip01 R Calf
+00000.nif,Bip01 R Clavicle
+00000.nif,Bip01 R Finger0
+00000.nif,Bip01 R Finger01
+00000.nif,Bip01 R Finger02
+00000.nif,Bip01 R Finger0Nub
+00000.nif,Bip01 R Finger1
+00000.nif,Bip01 R Finger11
+00000.nif,Bip01 R Finger12
+00000.nif,Bip01 R Finger1Nub
+00000.nif,Bip01 R Finger2
+00000.nif,Bip01 R Finger21
+00000.nif,Bip01 R Finger22
+00000.nif,Bip01 R Finger2Nub
+00000.nif,Bip01 R Foot
+00000.nif,Bip01 R Forearm
+00000.nif,Bip01 R Hand
+00000.nif,Bip01 R Thigh
+00000.nif,Bip01 R Toe0
+00000.nif,Bip01 R Toe0Nub
+00000.nif,Bip01 R UpperArm
+00000.nif,Bip01 Spine
+00000.nif,Bip01 Spine1
+00000.nif,Bip01 Spine2
+00000.nif,Bone_Armor_Back
+00001.nif,Bip01
+00001.nif,Bip01 Head
+00001.nif,Bip01 L Calf
+00001.nif,Bip01 L Clavicle
+00001.nif,Bip01 L Finger0

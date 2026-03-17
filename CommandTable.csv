@@ -1,0 +1,119 @@
+TID,Category,Type,UserAuth,LocalCommand,EngCommand,Desc,Arg_Num,Arg1,Arg2,Arg3,Arg4,InputEx
+,使用对象区分,"服务器1, 克拉2","使用权限(0=无,1=用户可用, 2= 运营商可用, 3=开发者可用)",韩语(韩语也可说明),英文,说明,,,,,,错误的信息输出
+,,,,,,,,,,,,
+U16,CBwString,U8,U8,CBwString,CBwString,CBwString,U8,CBwString,CBwString,CBwString,CBwString,CBwString
+1,PC,1,3,/m,/m,,0,,,,,
+2,PC,1,3,/PcDie,/PcDie,PC 死亡,0,,,,,
+3,PC,1,3,/PcRebirth,/PcRebirth,原地复活,0,,,,,移动 [区域名字]移动 [区域ID]移动 [X] [Y] [Z]移动 [X] [Y] [Z] [区域ID]
+4,PC,1,3,/PcHp,/PcHp,HP恢复,1,常数值,,,,/PcHp 500 : HP的 500 恢复
+5,PC,1,3,/PcMp,/PcMp,MP恢复,1,常数值,,,,/PcMp 500 : MP的 500 恢复
+6,PC,1,3,/PcExp,/PcExp,PC经验值上升/下降,1,"常数值(+,-)",,,,/PcExp 100 -> PC 经验值 100 上升
+7,PC,1,3,/PcLevelUp,/PcLevelUp,PC等级上升,1,常数值,,,,/PcLevelUp 10 -> PC 等级 10 上升
+8,PC,1,3,/PcLevelDown,/PcLevelDown,PC等级下降,1,常数值,,,,/PcLevelDown 10 -> PC 等级 10 下降
+9,PC,1,3,/PcWExp,/PcWExp,武器熟练度经验值上升/下降,1,"常数值(+,-)",,,,/PcWExp 100 ->目前安装的 武器 经验值 100 上升
+10,PC,1,3,/PcWLevelUp,/PcWLevelUp,武器熟练度等级上升,1,常数值,,,,/PcWLevelUp 10 -> 目前安装的 武器 等级 10 上升
+11,PC,1,3,/PcWLevelDown,/PcWLevelDown,武器熟练度等级下降,1,常数值,,,,/PcWLevelDown 10 -> 目前安装的 武器 等级 10 下降
+12,PC,1,3,/PcStatReset,/PcStatReset,升级奖励初始化,0,,,,,/PcStatReset -> 升级奖励初始化
+13,PC,1,3,/PcMove,/PcMove,PC 坐标移动,4,地图ID,x 坐标,y 坐标,z 坐标,/PcMove 2000 10 20 30 -> 2000号地图10/20/30 坐标移动
+14,PC,1,3,/PcReCall,/PcReCall,相对PC召唤到面前,1,string: PC名字,,,,/PcReCall 瓦尼卡 -> 瓦尼卡 PC的旁边 召唤
+15,PC,1,3,/PcReturn,/PcReturn,召唤前PC坐标移动,1,string: PC名字,,,,/PcReturn 瓦尼卡 -> 瓦尼卡 召唤 前 位置移动
+16,PC,1,3,/PcMoveAll,/PcMoveAll,所有PC坐标移动,4,地图ID,x 坐标,y 坐标,z 坐标,/PcMoveAll 2000 10 20 30 -> 2000号 地图 10/20/30 坐标 所有 PC移动
+17,PC,1,3,/PcReCallAll,/PcReCallAll,相关PC召唤到我面前,0,相关阵营,,,,/PcReCallAll 0 -> 高目标的 阵营 PC的 旁边 召唤
+18,PC,1,3,/PcReturnAll,/PcReturnAll,召唤前坐标相关PC移动,0,相关阵营,,,,/PcReturnAll 0 -> 高目标的 阵营 PC 召唤 前位置移动
+19,PC,1,3,/PcGoto,/PcGoto,相对PC旁边移动,1,string: PC名字,,,,/PcGoto 瓦尼卡 -> 瓦尼卡 PC 旁边移动
+20,PC,1,3,/PcMoney,/PcGhelld,Ghelld 增加/减少,1,"常数值(+,-)",,,,/PcMoney 100 -> 创造的 100 Ghelld 增加
+21,PC,1,3,/PcCoin,/PcCoin,战争货币增加/减少,1,"常数值(+,-)",,,,/PcCoin 100 -> 战争 确认窗口 100 货币 增加
+22,PC,1,3,/PcKickOne,/PcKickOne,相对PC强制连接结束,1,string: PC名字,,,,/PcKickOne 瓦尼卡 -> 瓦尼卡 PC 强制连接结束
+23,PC,1,3,/PcKickAll,/PcKickAll,所有PC强制连接结束,0,,,,,/PcKickAll -> 所有 PC 强制连接结束
+24,PC,1,3,/Chatblock,/Chatblock,PC聊天禁止,2,string: PC名字,禁止 时间,,,/Chatblock 瓦尼卡 1-> 瓦尼卡 1分钟 聊天 禁止
+25,PC,1,3,/ChatblockClear,/ChatblockClear,PC聊天禁止解除,1,string: PC名字,,,,/ChatblockClear 瓦尼卡-> 瓦尼卡 聊天 禁止 解除
+26,PC,1,3,/FamePoint,/FamePoint,声望分数,1,常数值,,,,/FamePoint 100 -> 战争 确认窗口 声望分数 100 增加
+27,PC,1,3,/ProductExp,/ProductExp,道具制作经验值上升,2,制作 号码,经验值 数值,,,/ProductExp 2 50 : 防具制作 经验值 50一样 上升
+28,PC,1,3,/GatherExp,/GatherExp,采集经验值上升,2,采集 号码,经验值 数值,,,/GatherExp 2 50 : 植物 采集 经验值 50一样 上升
+29,PC,1,3,/IronMan,/IronMan,无敌,0,无敌 状态,,,,/IronMan: 无损失
+30,PC,1,3,/DeathNote,/DeathNote,相对 PC 死亡,1,string: PC名字,,,,/DeathNote 乌拉拉 -> 乌拉拉 PC 死亡
+31,PC,1,3,/PcHeal,/PcHeal,HP/MP 恢复,0,,,,,/PcHeal -> PC的 HP/MP 全部 恢复
+32,PC,1,3,/PcCreate,/PcCreate,PC生成种族划分限制,1,相关阵营,,,,/PcCreate 1 -> 人类 阵营 PC 生成 限制
+33,PC,1,3,/PcLevelSet,/PcLevelSet,相关 Level的 PC 设置,1,PC等级(10单位),,,,/PcLevelSet 30 -> 30等级的 PC设置
+34,PC,1,3,/PcResetCoolTime,/PcResetCoolTime,所有冷却时间初始化,0,,,,,/PcResetCoolTime -> PC的 所有 冷却时间初始化
+35,Archlord,1,3,/ArchlordSet,/ArchlordSet,统治者设定,1,string: PC名字,,,,/ArchlordSet 乌拉拉 -> 乌拉拉 统治者的 设定
+36,Archlord,1,3,/ArchlordCancel,/ArchlordCancel,统治者删除,0,,,,,/ArchlordCancel -> 当前指定的 统治者的 状态 解除
+51,NPC,1,3,/NpcCreate,/NpcCreate,NPC生成,1,NPC TID 号码,,,,/NpcCreate 100 -> 100号 NPC 生成
+53,NPC,1,3,/NpcSummon,/NpcSummon,召唤NPC生成,1,NPC TID 号码,,,,/NpcSummon 100 -> 100号 召唤 NPC 生成
+54,NPC,1,3,/EntityCreate,/EntityCreate,Entity生成,1,Entity TID 号码,,,,/EntityCreate 100 -> 100号 Entity 生成
+61,Item,1,3,/ItemCreate,/ItemCreate,道具生成,1,道具 TID 号码,强化数值(装备) or ItemSeedTable的 TID(分身) or 数量(Stack道具) ,,,/ItemCreate 100 10 -> 100号 道具(装备) 10 生成 or 100号道具(分身) ItemSeedTable 10号 选择 生成 or 100号 道具(Stack道具) 10个生成
+62,Item,1,3,/InvenClear,/InvenClear,创造道具全部删除,0,,,,,/InvenClear -> 创造清理库存
+63,Item,1,3,/StoreClear,/StoreClear,仓库道具全部删除,0,,,,,/StoreClear -> 仓库 清理
+64,Item,1,3,/GuildStoreClear,/GuildStoreClear,公会仓库道具全部删除,0,,,,,/GuildStoreClear -> 公会仓库 清理
+65,Item,1,3,/AllItemClear,/AllItemClear,"创造仓库, 公会仓库道具全部删除",0,,,,,"/AllItemClear -> 创造, 仓库, 公会仓库 道具 全部 清理"
+66,Item,1,3,/CashInvenClear,/CashInvenClear,现金制造道具全部删除,0,,,,,/CashInvenClear -> 现金 创造 清理
+67,Item,1,3,/ItemRemainMinPlus,/ItemRemainMinPlus,道具时间增加,2,string: PC名字,增加 时间(分),,,/ItemRemainMinPlus 乌拉拉 1 -> 乌拉拉拥有的时间 道具 剩下的 时间 1分 增加
+68,Item,1,3,/ItemEndDatePlus,/ItemEndDatePlus,道具结束时间延长,2,string: PC名字,延长 日期,,,/ItemEndDatePlus 乌拉拉 1 -> 乌拉拉拥有的时间 道具 结束 日期 1日 延长
+71,Skill,1,3,/SkillLearn,/SkillLearn,技能学习,1,技能 TID 号码,,,,/SkillLearn 100 -> 100号 技能 学习
+72,Skill,1,3,/SkillLearnAll,/SkillLearnAll,安装技能全部学习,0,,,,,
+73,Skill,1,3,/SkillReset,/SkillReset,安装武器技能初始化,0,,,,,
+74,Skill,1,3,/SkillResetAll,/SkillResetAll,所有技能初始化,0,,,,,
+75,Skill,1,3,/BuffAdd,/BuffAdd,buff增加,1,技能 TID 号码,,,,/BuffAdd 100 -> 100号 技能 buff 增加
+76,Skill,1,3,/BuffDelete,/BuffDelete,buff删除,1,技能 TID 号码,,,,/BuffDelete 100 -> 100号 技能 buff 删除
+77,Skill,1,3,/BuffClear,/BuffClear,buff全部删除,0,,,,,
+81,Quest,1,3,/QuestInsert,/QuestInsert,探索增加,1,探索 TID 号码,,,,/QuestInsert 100 -> 100号 探索 增加
+82,Quest,1,3,/QuestComplete,/QuestComplete,探索终结,1,探索 TID 号码,,,,/QuestComplete 100 -> 100号 探索 终结
+83,Quest,1,3,/QuestDelete,/QuestDelete,探索删除,1,探索 TID 号码,,,,/QuestDelete -> 100号 探索 删除
+84,Quest,1,3,/QuestDeleteAll,/QuestDeleteAll,探索全部删除,0,,,,,
+85,Quest,1,3,/QuestAlarm,/QuestAlarm,探索提醒,1,探索 TID 号码,,,,
+91,RaceWar,1,3,/RaceWarOpen,/RaceWarOpen,大规模阵营战募集,1,战争 TID,募集时间(分),,,/RaceWarOpen 1  2 -> 1号 战争 2分 后 开始
+92,RaceWar,1,3,/RaceWarStart,/RaceWarStart,大规模阵营战开始,1,战争 TID,,,,/RaceWarStart 1 -> 1号 战争 开始
+93,RaceWar,1,3,/RaceWarEnd,/RaceWarEnd,大规模阵营战结束,1,战争 TID,,,,/RaceWarEnd 1 -> 1号 战争 结束
+94,RaceWar,1,3,/CityWarOpen,/CityWarOpen,都市侵略站募集,1,防御阵营,募集时间(分),,,/CityWarOpen 0 2 -> 高目标的 防御战争 2分 后 开始
+95,RaceWar,1,3,/RaceWarMaxPerson,/RaceWarMaxPerson,大规模阵营战人员数限制,2,战争 TID,最大 人员数,,,/RaceWarMaxPerson 0 100 -> 1号 战争 最大 人员数 100名 变更
+98,TeamWar,1,3,/TeamWarOpen,/TeamWarOpen,小规模阵营战开始,1,战争 TID,,,,/TeamWarOpen 1  -> 1号 战争 开始
+99,TeamWar,1,3,/TeamWarStart,/TeamWarStart,小规模阵营战开始,0,,,,,/TeamWarStart 自己回来的战争 开始
+100,TeamWar,1,3,/TeamWarEnd,/TeamWarEnd,小规模阵营战结束,1,胜利阵营,,,,/TeamWarEnd 自己 进行中的 战争 结束
+101,Guild,1,3,/GuildGradeUp,/GuildGradeUp,公会等级上升,0,,,,,
+111,Notice,1,3,/个人攻击,/NoticeOne,攻击(个人),2,string: PC名字,消息,,,
+112,Notice,1,3,/攻击,/NoticeAll,攻击(全部),1,消息,,,,
+121,Party,1,3,/PartyExp,/PartyExp,队伍经验值上升,1,常数值,,,,/PartyExp 50 -> 队伍 经验值 50 上升
+131,Event,1,3,/EventOn,/EventOn,促销活动开始,1,促销活动 TID,,,,/EventOn 1 -> 1号 促销活动 开始
+132,Event,1,3,/EventOff,/EventOff,促销活动 结束,1,促销活动 TID,,,,/EventOff 1 -> 1号 促销活动 结束
+133,Event,1,3,/EventInfo,/EventInfo,进行中的所有促销活动收到情报.,0,,,,,/EnentInfo -> 进行中的 所有 促销活动收到信息.
+140,CashShop,1,3,/CloseCashShop,/CloseCashShop,现金商店关闭,0,,,,,
+141,CashShop,1,3,/OpenCashShop,/OpenCashShop,现金商店开张,0,,,,,
+142,CashShop,1,3,/UpdateCashShopItem,/UpdateCashShopItem,现金商店产品更新,0,,,,,
+201,Paid,1,3,/PaidInvenEx,/PaidInvenEx,建造土地设定,1,扩展 创造 个数,,,,
+202,Paid,1,3,/PaidStoreEx,/PaidStoreEx,仓库建造设定,1,扩展 仓库 个数,,,,
+301,Contents,1,3,/ContentsOption,/ContentsOption,内容更改选项值,3,内容选项 TID,选择 号码,常数值,,/ContentsOption 1 0 30 -> PC等级 30 限制 (ContentsOptionTable 引用)
+302,Contents,1,3,/ContentsOptionReset,/ContentsOptionReset,内容选择初始设定,0,,,,,/ContentsOptionReset -> 内容选项 初始值更改 
+401,Server,1,3,/ServerMaxUser,/ServerMaxUser,服务器最大人数变更,1,最大 人员数,,,,/ServerMaxUser 2000 -> 服务器最大 连接人数 2000名 变更
+501,Log,1,3,/CombatLog,/CombatLog,战斗记录开始/结束,1,常数值,,,,"/CombatLog [0 or 1] -> 0 : 记录结束, 1 : 记录 开始"
+1001,Friend,2,1,/朋友增加,/FriendAdd,朋友增加,1,string: PC名字,,,,/朋友增加 哭泣
+1002,Friend,2,1,/屏蔽,/BlockerAdd,朋友屏蔽,1,string: PC名字,,,,/屏蔽 哭泣
+1003,Friend,2,1,/屏蔽解除,/BlockerDelete,朋友屏蔽解除,1,string: PC名字,,,,/屏蔽解除 哭泣
+1011,Party,2,1,/队伍邀请,/PartyInvite,队伍邀请,1,string: PC名字,,,,/队伍 哭泣 -> 乌拉拉 PC 队伍 邀请 请求
+1012,Party,2,1,/队伍退出,/PartyOut,队伍退出,0,,,,,/队伍退出 : 队伍里 退出
+1013,Party,2,1,/队伍驱逐,/PartyKickout,队伍驱逐,1,string: PC名字,,,,/队伍驱逐 统治者 : 统治者 角色 队伍中 驱逐
+1014,Party,2,1,/攻略邀请,/RaidInvite,攻略邀请,1,string: PC名字,,,,/攻略邀请 哭泣 -> 乌拉拉 PC 攻略 邀请 请求
+1015,Party,2,1,/攻略退出,/RaidOut,攻略退出,0,,,,,/攻略退出 : 攻略中退出
+1016,Party,2,1,/攻略驱逐,/RaidKickout,攻略驱逐,1,string: PC名字,,,,/攻略驱逐 统治者 : 统治者 角色 攻略中 驱逐
+1021,Guild,2,3,/公会生成,/GuildCreate,公会生成,0,,,,,
+1022,Guild,2,3,/公会解散,/GuildDelete,公会解散,0,,,,,
+1023,Guild,2,1,/公会邀请,/GuildInvite,公会邀请,1,string: PC名字,,,,
+1024,Guild,2,1,/公会退出,/GuildOut,公会退出,0,,,,,
+1025,Guild,2,1,/公会驱逐,/GuildKickout,公会驱逐,1,string: PC名字,,,,
+1026,Guild,2,3,/公会仓库,/GuildStoreOpen,公会仓库,0,,,,,
+1031,Other,2,3,/炼金术,/AlchemyOpen,炼金术,0,,,,,
+1032,Other,2,3,/信箱,/MailBoxOpen,信箱,0,,,,,
+1041,Development,2,3,/ShowHUD,/ShowHUD,关注人行为UI打开,0,,,,,
+1042,Development,2,3,/HideHUD,/HideHUD,关注人行为UI关闭,0,,,,,
+1043,Development,2,3,/CheckValidTable,/CheckValidTable,有效性检查表,0,,,,,
+1044,Development,2,3,/CheckValidTable,/CheckValidTable,有效性检查表,0,,,,,
+1045,Development,2,3,/ShowOptionDlg,/ShowOptionDlg,Option 对话窗口显示,0,,,,,
+2001,SocialAction,2,1,/问候,,问候,0,,,,,
+2002,SocialAction,2,1,/乞讨,,乞讨,0,,,,,
+2003,SocialAction,2,1,/否定,,否定,0,,,,,
+2004,SocialAction,2,1,/喜悦,,喜悦,0,,,,,
+2005,SocialAction,2,1,/悲伤,,悲伤,0,,,,,
+2006,SocialAction,2,1,/愤怒,,愤怒,0,,,,,
+2007,SocialAction,2,1,/掌声,,掌声,0,,,,,
+2008,SocialAction,2,1,/舞蹈,,舞蹈,0,,,,,
+2009,SocialAction,2,1,/突击,,突击,0,,,,,
+2010,SocialAction,2,1,/挑衅,,挑衅,0,,,,,

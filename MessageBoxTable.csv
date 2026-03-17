@@ -1,0 +1,164 @@
+TID,String,EngTitle,LocalTitle,EngContents,LocalContents,FontColor,FontSize,EngDesc,LocalDesc
+???id,???,?? ???,?? ???,?? ??,?? ??,???,????,?? ????,?? ????
+2,2,2,2,2,2,2,2,2,2
+U16,CBwString,CBwString,CBwString,CBwString,CBwString,CBwString,U8,CBwString,CBwString
+1,BOX_SERVER_NOT_OPENED,MBT_Title_000001,不可连接,MBT_Contents_000001,<TC '255:198:0' Text'服务器无法连接.'/>,"255,0,0",10,MBT_Desc_000001,服务器无法连接的情况
+2,BOX_CONNECTION_CLOSED,MBT_Title_000002,不可连接,MBT_Contents_000002,<TC '255:198:0' Text'服务器和连接被终止.'/>,"255,0,0",10,MBT_Desc_000002,服务器掉线
+3,BOX_SECURITY_ERROR,MBT_Title_000003,不可连接,MBT_Contents_000003,<TC '255:198:0' Text'安全程序无法正常进行.'/>,"255,0,0",10,MBT_Desc_000003,保护程序不能正常启动的情况
+4,BOX_ERROR_CONNECTION,MBT_Title_000004,不可连接,MBT_Contents_000004,<TC '255:198:0' Text'您已连接到角色./n请重新连接.'/>,"255,0,0",10,MBT_Desc_000004,游戏角色已经链接情况
+5,BOX_SELECT_CAMP_REQUEST,MBT_Title_000005,阵营选择,MBT_Contents_000005,<TC '255:198:0' Text'请选择一个阵营.'/>,"235,203,147",10,MBT_Desc_000005,第一次阵营选择的信息弹出
+6,BOX_CAMP_SELECT,MBT_Title_000006,阵营选择,MBT_Contents_000006,<TC '255:198:0' Text'再次选择阵营的话在同一设备上无法生成其它阵营角色./n要继续进行吗?/n现在选择阵营 : $GetValue1()'/>,"235,203,147",10,MBT_Desc_000006,阵营选择的确认信息
+7,BOX_CHARACTOR_NAME_NEED,MBT_Title_000007,人物名称输入,MBT_Contents_000007,<TC '255:198:0' Text'请设置角色名称'/>,"235,203,147",10,MBT_Desc_000007,生成角色时不能填写姓名的情况
+8,BOX_CHARACTOR_CREATING,MBT_Title_000008,信息,MBT_Contents_000008,<TC '255:198:0' Text'角色正在生成中..…'/>,"235,203,147",10,MBT_Desc_000008,角色生成中的状态
+9,BOX_CHARACTOR_DELETE_CONFIRM,MBT_Title_000009,人物删除,MBT_Contents_000009,<TC '255:198:0' Text'要删除角色吗?/n删除的角色无法恢复./n$GetValue1()'/>,"255,0,0",10,MBT_Desc_000009,角色删除确认信息
+10,BOX_CHARACTOR_DELETE_FAIL,MBT_Title_000010,人物删除失败,MBT_Contents_000010,<TC '255:198:0' Text'删除角色失败.'/>,"255,0,0",10,MBT_Desc_000010,角色删除失败信息
+11,BOX_CHARACTER_DELETE_CANCEL,MBT_Title_000011,人物删除取消,MBT_Contents_000011,<TC '255:198:0' Text'要取消角色删除吗?'/>,"255,0,0",10,MBT_Desc_000011,角色删除取消
+12,BOX_CHARACTOR_CREATE_FAILED,MBT_Title_000012,人物生成失败,MBT_Contents_000012,<TC '255:198:0' Text'角色生成失败.'/>,"255,0,0",10,MBT_Desc_000012,角色生成失败
+13,BOX_CHARACTOR_MAINWEAPON_NEED,MBT_Title_000013,武器选择,MBT_Contents_000013,<TC '255:198:0' Text'请选择主要武器.'/>,"235,203,147",10,MBT_Desc_000013,不能选择武器时点击角色生成按钮
+14,BOX_CHARACTOR_SELECT_NEED,MBT_Title_000014,信息,MBT_Contents_000014,<TC '255:198:0' Text'应该选择角色.'/>,"235,203,147",10,MBT_Desc_000014,角色生成画面不能生成角色时，请点击[生成按钮]
+15,BOX_CHARACTOR_CANT_MORE_CREATE,MBT_Title_000015,人物生成个数超过,MBT_Contents_000015,<TC '255:198:0' Text'无法再次生成.'/>,"255,0,0",10,MBT_Desc_000015,3个角色生成时，请点击[生成按钮]
+16,BOX_CHARACTOR_CANT_NAME,MBT_Title_000016,不可生成人物,MBT_Contents_000016,<TC '255:198:0' Text'这是一个无法生成的名称.'/>,"255,0,0",10,MBT_Desc_000016,按照黄金规则生成角色
+17,BOX_GUILD_INVITE_ASK,MBT_Title_000017,加入工会邀请,MBT_Contents_000017,<TC '255:198:0' Text'[$GetValue1()] 公会 /n加入申请. /n确定要加入吗?'/>,"235,203,147",10,MBT_Desc_000017,收到公会邀请，在电脑上显示的信息
+18,BOX_GUILD_MASTER_MODIFY_ASK,MBT_Title_000018,担任工会主席,MBT_Contents_000018,<TC '255:198:0' Text'确定你要接受公会负责人的任务?'/>,"235,203,147",10,MBT_Desc_000018,收到工会主席邀请时询问是否接受邀请
+19,BOX_GUILD_LEAVE_ASK,MBT_Title_000019,退出公会,MBT_Contents_000019,<TC '255:198:0' Text'[$GetValue1()] 公会 /n真的确定要退出吗?'/>,"255,0,0",10,MBT_Desc_000019,[退出公会] 按键选择
+20,BOX_GUILD_MEMBER_BAN_01,MBT_Title_000020,踢出公会,MBT_Contents_000020,<TC '255:198:0' Text'[$GetValue1()] /n确定要驱逐出公会吗?'/>,"255,0,0",10,MBT_Desc_000020,社区消息中[踢出公会] 选择
+21,BOX_GUILD_UPGRADE_CONDITION,MBT_Title_000021,公会等级上升,MBT_Contents_000021,<TC '255:198:0' Text'目前公会成员 : [$GetValue1()]'/>/n<TC '0:208:94' Text'必要公会成员: [$GetValue2()]'/>/n<TC '255:198:0' Text'现在公会资金: [$GetValue3()]'/>/n <TC '0:208:94' Text'必要公会资金 : [$GetValue4()]'/>,"235,203,147",10,MBT_Desc_000021,工会升级消息
+22,BOX_GUILD_DELETE_ASK,MBT_Title_000022,公会解体,MBT_Contents_000022,<TC '255:198:0' Text'撤销公会将无法恢复./n真的要撤销公会吗?'/>,"255,0,0",10,MBT_Desc_000022,公会解散
+23,BOX_ITEM_DROP_CONFIRM,MBT_Title_000023,删除物品,MBT_Contents_000023,<TC '255:198:0' Text'$GetValue1()'/>/n确定销毁物品吗?,"255,0,0",10,MBT_Desc_000023,垃圾桶中丢弃物品
+24,BOX_ITEM_DIVIDE,MBT_Title_000024,分享物品,MBT_Contents_000024,<TC '255:198:0' Text'请调整数量共享室'/>,"235,203,147",10,MBT_Desc_000024,库存/本团仓库中的人物分享信息
+25,BOX_ITEMBIND_WEAR,MBT_Title_000025,同意回归,MBT_Contents_000025,<TC '255:198:0' Text'物品穿着后绑定./n确定要穿吗?'/>,"255,0,0",10,MBT_Desc_000025,使用系归属物品信息
+26,BOX_ITEMBIND_GET,MBT_Title_000026,同意回归,MBT_Contents_000026,<TC '255:198:0' Text'绑定获得物品./n要获取吗?'/>,"255,0,0",10,MBT_Desc_000026,获得归属物品信息
+27,BOX_ITEMBREAK_NOTSLOT,MBT_Title_000027,不可解体,MBT_Contents_000027,<TC '255:198:0' Text'包的空白空间应该有3间以上/n才能进行分散.'/>,"255,0,0",10,MBT_Desc_000027,分解时库存空间不足
+28,BOX_SKILL_PARTYRECALL,MBT_Title_000028,召唤队伍成员,MBT_Contents_000028,<TC '255:198:0' Text'队伍成员 $GetValue1()传唤申请他人./n确定要传换吗?'/>,"235,203,147",10,MBT_Desc_000028,"使用队伍成员召唤技能,给队伍成员发生的信息"
+29,BOX_SKILL_LEARN_FAILED,MBT_Title_000029,不可学习技能,MBT_Contents_000029,"<TC '255:198:0' Text'等级不足, /n无法学习技能.'/>","255,0,0",10,MBT_Desc_000029,技能学习失败
+30,BOX_PORTAL_TRANSMISSION_TRY,MBT_Title_000030,逃避移动,MBT_Contents_000030,<TC '255:198:0' Text'$GetValue1()向地点移动的话 $GetValue2()戈尔隆德时必要的. /n要移动吗?'/>,"235,203,147",10,MBT_Desc_000030,试图向目标据点移动
+31,BOX_PORTAL_REGISTRATION,MBT_Title_000031,逃避登录,MBT_Contents_000031,<TC '255:198:0' Text'$GetValue1()/n必须进行注册可用.'/>,"235,203,147",10,MBT_Desc_000031,不能登录逃脱接触的情况
+32,BOX_PARTY_INVITATION_ASK,MBT_Title_000032,队伍邀请,MBT_Contents_000032,<TC '255:198:0' Text'[$GetValue1()]您被/n邀请参加队伍.'/>,"235,203,147",10,MBT_Desc_000032,招待队伍
+33,BOX_PARTY_MEMBER_BAN_ASK,MBT_Title_000033,队伍驱逐,MBT_Contents_000033,<TC '255:198:0' Text'[$GetValue1()]确定要驱逐出他吗?'/>,"255,0,0",10,MBT_Desc_000033,队伍人员驱逐
+34,BOX_RACEWAR_NOT_YET,MBT_Title_000034,信息,MBT_Contents_000034,<TC '255:198:0' Text'这不是大规模种族战争时间.'/>,"255,0,0",10,MBT_Desc_000034,不是大规模种族战的时间
+35,BOX_RACEWAR_MOVETO_BATTLEFIELD,MBT_Title_000035,信息,MBT_Contents_000035,<TC '255:198:0' Text'确定要向种族战争的营地移动吗?'/>,"235,203,147",10,MBT_Desc_000035,大规模种族战参与意向确认信息
+36,BOX_INVALID_ID,MBT_Title_000036,不可生成人物,MBT_Contents_000036,<TC '255:198:0' Text'这是无法使用的名字./n名称无法输入/n具有特殊字符或禁用词.'/>,"255,0,0",10,MBT_Desc_000036,角色生成时名称违反所制定的规则输入的情况
+37,BOX_WEAPONLEVEL_UP,MBT_Title_000037,武器等级上升,MBT_Contents_000037,<TC '255:198:0' Text'$GetValue1()确定使武器水平上升吗?'/>,"235,203,147",10,MBT_Desc_000037,武器熟练程度等级确认窗口
+38,BOX_PRODUCT_M_FAIL_01,MBT_Title_000038,存储空间不足,MBT_Contents_000038,<TC '255:198:0' Text'包里没有空白空间无法进行.'/>,"255,0,0",10,MBT_Desc_000038,生产库存不足，生产无法继续时
+39,BOX_GAME_END_CONFIRM,MBT_Title_000039,游戏结束,MBT_Contents_000039,<TC '255:198:0' Text'确定要结束游戏吗?'/>,"235,203,147",10,MBT_Desc_000039,游戏连接终止确认信息
+40,BOX_TRADE_SUCCESS,MBT_Title_000040,交易结束,MBT_Contents_000040,<TC '255:198:0' Text'完成交易.'/>,"235,203,147",10,MBT_Desc_000040,1:1交易完成
+41,BOX_TRADE_SLOT_ERROR,MBT_Title_000041,交易取消,MBT_Contents_000041,<TC '255:198:0' Text'包里没有空白位置/n交易已取消.'/>,"255,0,0",10,MBT_Desc_000041,1:1交易失败
+42,BOX_TRADE_REQUEST,MBT_Title_000042,交易申请,MBT_Contents_000042,<TC '255:198:0' Text'$GetValue1()您要/n申请交易.'/>,"235,203,147",10,MBT_Desc_000042,1:1交易邀请在PC画面弹出
+43,BOX_TRADE_CANCEL,MBT_Title_000043,交易取消,MBT_Contents_000043,<TC '255:198:0' Text'取消交易.'/>,"255,0,0",10,MBT_Desc_000043,1:1交易取消
+44,BOX_TRADE_MONEY_ERROR,MBT_Title_000044,交易取消,MBT_Contents_000044,<TC '255:198:0' Text'手头资金不足无法交易.'/>,"255,0,0",10,MBT_Desc_000044,手头资金不足
+45,BOX_TRADE_INVEN_ERROR,MBT_Title_000045,交易取消,MBT_Contents_000045,<TC '255:198:0' Text'没有库存交易物品.'/>,"255,0,0",10,MBT_Desc_000045,没有库存交易物品
+46,BOX_TRADE_NOCHAR_ERROR,MBT_Title_000046,交易取消,MBT_Contents_000046,<TC '255:198:0' Text'没有交易对象.'/>,"255,0,0",10,MBT_Desc_000046,没有交易对方的角色
+47,BOX_GAMBLE_GAIN,MBT_Title_000047,物品获取,MBT_Contents_000047,<TC '255:198:0' Text'$GetValue1()物品 $GetValue2()个获取.'/>,"235,203,147",10,MBT_Desc_000047,赌博物品获得信息
+48,BOX_PORTAL_ITEMTRANSMISSION_TRY,MBT_Title_000048,逃避移动,MBT_Contents_000048,<TC '255:198:0' Text'$GetValue1()向据点移动的话 $GetValue2()戈尔隆德需要$GetValue3() $GetValue4()个. /n需要移动吗?'/>,"235,203,147",10,MBT_Desc_000048,试图利用逃税
+49,BOX_PCSHOP_NAME,MBT_Title_000049,商店名变更,MBT_Contents_000049,<TC '255:198:0' Text'请输入商店姓名.'/>,"235,203,147",10,MBT_Desc_000049,个人商店姓名变更信息
+50,BOX_POST_ALL_DELETE,MBT_Title_000050,取消邮递,MBT_Contents_000050,<TC '255:198:0' Text'$GetValue1()/n要删除全部邮件吗?'/>,"255,0,0",10,MBT_Desc_000050,邮件信息
+51,BOX_POST_ALLDELETE_ERROR,MBT_Title_000051,邮递删除不可,MBT_Contents_000051,<TC '255:198:0' Text'没有删除的邮件.'/>,"255,0,0",10,MBT_Desc_000051,邮件信息
+52,BOX_POST_SELECT_DELETE,MBT_Title_000052,邮递删除,MBT_Contents_000052,<TC '255:198:0' Text'要删除相关邮件吗?'/>,"255,0,0",10,MBT_Desc_000052,邮件信息
+53,BOX_POST_DELETE_ERROR,MBT_Title_000053,邮递删除不可,MBT_Contents_000053,<TC '255:198:0' Text'请选择要删除的邮件.'/>,"255,0,0",10,MBT_Desc_000053,邮件信息
+54,BOX_POST_MYNAME,MBT_Title_000054,邮件不可发送,MBT_Contents_000054,<TC '255:198:0' Text'在自己所属账户内给角色/n无法寄送邮件.'/>,"255,0,0",10,MBT_Desc_000054,邮件信息
+55,BOX_POST_NOTHING_NAME,MBT_Title_000055,输入人物名称,MBT_Contents_000055,<TC '255:198:0' Text'请输入角色名称.'/>,"235,203,147",10,MBT_Desc_000055,邮件信息
+56,BOX_POST_NAME_ERROR,MBT_Title_000056,确认人物名称,MBT_Contents_000056,<TC '255:198:0' Text'为了寄送邮件首先 /n应该确认角色的姓名.'/>,"235,203,147",10,MBT_Desc_000056,邮件信息
+57,BOX_POST_SLOT_FULL,MBT_Title_000057,注意公文邮递,MBT_Contents_000057,<TC '255:198:0' Text'邮箱邮件已满./n无法接受重要邮件.'/>,"255,0,0",10,MBT_Desc_000057,公文邮件注意
+58,BOX_ITEM_ENCHANT_UNABLE_ACCEPT_ITEM,MBT_Title_000058,物品不可强化,MBT_Contents_000058,<TC '255:198:0' Text'这是无法强化的物品.'/>,"255,0,0",10,MBT_Desc_000058,物品强化无法登陆时
+59,BOX_GUILD_URL_EDIT,MBT_Title_000059,工会网页登陆,MBT_Contents_000059,<TC '255:198:0' Text'输入登录网页的URL.'/>,"235,203,147",10,MBT_Desc_000059,工会网站注册时输入文本框
+60,BOX_GUILD_MASTER_DELEGATE,MBT_Title_000060,就任工会主席,MBT_Contents_000060,<TC '255:198:0' Text'要给选择的公会成员 /n委任公会主席吗?'/>,"235,203,147",10,MBT_Desc_000060,就任公会确定文本框
+61,BOX_GUILD_MEMBER_INTRO,MBT_Title_000061,输入自我介绍,MBT_Contents_000061,<TC '255:198:0' Text'输入自我介绍的内容.'/>,"235,203,147",10,MBT_Desc_000061,公会自我介绍修改输入框
+62,BOX_BINDER_OBJECT_SELECT,MBT_Title_000062,存储据点,MBT_Contents_000062,<TC '255:198:0' Text'[$GetValue1()]/n这地方是指定的据点吗?'/>,"235,203,147",10,MBT_Desc_000062,是否保存据点
+63,BOX_BINDER_LOCATION_SET,MBT_Title_000063,存储据点,MBT_Contents_000063,<TC '255:198:0' Text'[$GetValue1()]指定地点.'/>,"235,203,147",10,MBT_Desc_000063,据点保存完成
+64,BOX_SERVER_CAMP_LIMIT,MBT_Title_000064,阵营限制,MBT_Contents_000064,<TC '255:198:0' Text'有关服务器现在[$GetValue1()]可能正在生产阵营./n要继续进行吗?'/>,"255,0,0",10,MBT_Desc_000064,阵营限制信息
+65,BOX_CONTRACT_AGREE,MBT_Title_000065,同意条款,MBT_Contents_000065,<TC '255:198:0' Text'没有同意条约的话游戏无法进行./n真的要结束游戏吗?'/>,"255,0,0",10,MBT_Desc_000065,条款同意信息
+66,BOX_SERVER_FULL,MBT_Title_000066,服务器连接不良,MBT_Contents_000066,<TC '255:198:0' Text'人员超出无法连接.'/>,"255,0,0",10,MBT_Desc_000066,试图连接最高服务器
+67,BOX_SERVER_CLOSED,MBT_Title_000067,服务器连接不良,MBT_Contents_000067,<TC '255:198:0' Text'相关服务器正在检修中.'/>,"255,0,0",10,MBT_Desc_000067,试图连接检查中的服务器
+68,BOX_SERVER_NOT_SELECTED,MBT_Title_000068,服务器选择,MBT_Contents_000068,<TC '255:198:0' Text'选择服务器后开始游戏.'/>,"235,203,147",10,MBT_Desc_000068,不能选择服务器时双击连接游戏按钮
+69,BOX_GUILDMARK_MODIFY_ASK,MBT_Title_000069,公会标志变更,MBT_Contents_000069,<TC '255:198:0' Text'选择公会标志需要变更信息吗?'/>,"235,203,147",10,MBT_Desc_000069,公会标志变更
+70,BOX_PARTY_MATCH_RECRUIT_TEXT,MBT_Title_000070,队伍邀请函,MBT_Contents_000070,<TC '255:198:0' Text'输入队伍邀请文字.'/>,"235,203,147",10,MBT_Desc_000070,队伍召集文字登录及变更
+71,BOX_PARTY_MATCH_ASK_JOIN,MBT_Title_000071,队伍邀请,MBT_Contents_000071,<TC '255:198:0' Text'[$GetValue1() / Lv.$GetValue2() / $GetValue3() ] 您/n邀请加入队伍.'/>,"235,203,147",10,MBT_Desc_000071,通过队伍信息请求邀请
+72,BOX_PARTY_MATCH_SEARCH_FAIL_NOTSAME,MBT_Title_000072,队伍列表检索,MBT_Contents_000072,<TC '255:198:0' Text'没有搜索结果.'/>,"235,203,147",10,MBT_Desc_000072,检索队伍信息没有结果时
+73,BOX_PARTY_MATCH_SEARCHING,MBT_Title_000073,队伍列表检索,MBT_Contents_000073,<TC '255:198:0' Text'搜索中.'/>,"235,203,147",10,MBT_Desc_000073,检索队伍信息时
+74,BOX_PARTY_MATCH_SEARCHING_CANCLE,MBT_Title_000074,队伍列表检索,MBT_Contents_000074,<TC '255:198:0' Text'取消搜索.'/>,"235,203,147",10,MBT_Desc_000074,队伍信息检索取消时
+75,BOX_PARTYGROUP_ASK_SETUP,MBT_Title_000075,邀请莱德,MBT_Contents_000075,<TC '255:198:0' Text'[$GetValue1()]您/n邀请莱德./n要同意吗?'/>,"235,203,147",10,MBT_Desc_000075,邀请莱德时
+76,BOX_PARTYGROUP_BAN,MBT_Title_000076,驱逐莱德,MBT_Contents_000076,<TC '255:198:0' Text'[$GetValue1()] 您的队伍/n要联合驱逐吗?'/>,"255,0,0",10,MBT_Desc_000076,在队伍驱逐莱德时候
+77,QUEST_SHARE_REQUEST,MBT_Title_000077,奎斯特公共邀请,MBT_Contents_000077,<TC '255:198:0' Text'[$GetValue1()]要共同使用吗?'/>,"235,203,147",10,MBT_Desc_000077,共同邀请奎斯特时在PC接受共同邀请
+78,QUEST_GIVEUP,MBT_Title_000078,抛弃奎斯特,MBT_Contents_000078,<TC '255:198:0' Text'[$GetValue1()] 奎斯特/n要抛弃吗?'/>,"255,0,0",10,MBT_Desc_000078,抛弃奎斯特
+79,BOX_WAR_ATTACK_JOIN,MBT_Title_000079,确认参与战争,MBT_Contents_000079,<TC '255:198:0' Text'向都市进攻对方阵营吗?'/>,"235,203,147",10,MBT_Desc_000079,参与城市进攻的意愿（攻城）
+80,BOX_WAR_DEFENSE_JOIN,MBT_Title_000080,确认参与战争,MBT_Contents_000080,<TC '255:198:0' Text'向自己都市移动需要防御吗?'/>,"235,203,147",10,MBT_Desc_000080,参与城市进攻的意愿 (水星)
+81,BOX_CHAT_CREATE_NAME,MBT_Title_000081,生成网聊标记,MBT_Contents_000081,<TC '255:198:0' Text对话框名称'/>,"235,203,147",10,MBT_Desc_000081,聊天标签生成
+82,BOX_CHAT_CHANGE_NAME,MBT_Title_000082,更改聊天名字,MBT_Contents_000082,<TC '255:198:0' Text'输入变更的名称.'/>,"235,203,147",10,MBT_Desc_000082,窗口名称变更
+83,BOX_CHAT_ALLRESET,MBT_Title_000083,聊天室初始化,MBT_Contents_000083,<TC '255:198:0' Text'要初始化全部聊天窗口吗?'/>,"235,203,147",10,MBT_Desc_000083,聊天窗口初始化点击重置按钮的提示信息
+84,BOX_CERTIFY_USERNOTEXISTID3,MBT_Title_000084,登录,MBT_Contents_000084,<TC '255:198:0' Text'非正常使用者ID号码!'/>,"255,0,0",10,MBT_Desc_000084,帐户不存在的时候
+85,BOX_CERTIFY_USERDIFFPSWD,MBT_Title_000085,登录,MBT_Contents_000085,<TC '255:198:0' Text'密码错误!'/>,"255,0,0",10,MBT_Desc_000085,
+86,BOX_CERTIFY_AUTHINVALID,MBT_Title_000086,登录,MBT_Contents_000086,<TC '255:198:0' Text'不是认证的使用者.!'/>,"255,0,0",10,MBT_Desc_000086,毫无关系的运营者开户时ip不一样
+87,BOX_CERTIFY_AUTHINVALID2,MBT_Title_000087,登录失败,MBT_Contents_000087,<TC '255:198:0' Text'请再次登录.'/>,"255,0,0",10,MBT_Desc_000087,登录失败
+88,BOX_CERTIFY_USERBLOCKED,MBT_Title_000088,登录,MBT_Contents_000088,<TC '255:198:0' Text'是阻碍状态使用者.!/n剩下时间 $GetValue1()时间未到'/>,"255,0,0",10,MBT_Desc_000088,
+89,BOX_CERTIFY_USERCHALREADYLOGIN,MBT_Title_000089,登录,MBT_Contents_000089,<TC '255:198:0' Text'同一账户正在连接.!'/>,"255,0,0",10,MBT_Desc_000089,相同账户已连接时（不可登录）
+90,BOX_CERTIFY_USERCHALREADYLOGIN2,MBT_Title_000090,登录,MBT_Contents_000090,<TC '255:198:0' Text'使用同一账户连接..'/>,"255,0,0",10,MBT_Desc_000090,相同账户已连接时（登录服务器异常）
+91,BOX_CERTIFY_VERSIONLOW,MBT_Title_000091,登录,MBT_Contents_000091,<TC '255:198:0' Text'客户端和服务器版本不相匹配.'/>,"255,0,0",10,MBT_Desc_000091,客户端和服务器版本不相匹配
+92,BOX_CHAT_NOTNAME,MBT_Title_000092,追加/变更聊天标记,MBT_Contents_000092,<TC '255:198:0' Text'用聊天标签是无法使用的名称.'/>,"255,0,0",10,MBT_Desc_000092,聊天标签生成[全部]输入时
+93,BOX_FRIEND_NAME_NEED,MBT_Title_000093,登录,MBT_Contents_000093,<TC '255:198:0' Text'请输入登录角色名称'/>,"235,203,147",10,MBT_Desc_000093,朋友登录情况按钮
+94,BOX_WAIT_NAME,MBT_Title_000094,待机中…,MBT_Contents_000094,<TC '255:198:0' Text'正在处理中.'/>,"255,255,255",10,MBT_Desc_000094,等待表
+95,BOX_CREATE_PCNOTSLOT,MBT_Title_000095,账户生成,MBT_Contents_000095,<TC '255:198:0' Text'Pc的插槽是非正常的.'/>,"255,0,0",10,MBT_Desc_000095,帐户生成错误
+96,BOX_CREATE_PCNOTUNION,MBT_Title_000096,账户生成,MBT_Contents_000096,<TC '255:198:0' Text'这是无法生成的种族.'/>,"255,0,0",10,MBT_Desc_000096,帐户生成错误
+97,BOX_CREATE_PCNOTRACE,MBT_Title_000097,账户生成,MBT_Contents_000097,<TC '255:198:0' Text'Pc的种族是非正常的.'/>,"255,0,0",10,MBT_Desc_000097,帐户生成错误
+98,BOX_CREATE_PCNOTGEN,MBT_Title_000098,账户生成,MBT_Contents_000098,<TC '255:198:0' Text'Pc的性别是非正常的.'/>,"255,0,0",10,MBT_Desc_000098,帐户生成错误
+99,BOX_CREATE_NOTWEAPON,MBT_Title_000099,账户生成,MBT_Contents_000099,<TC '255:198:0' Text'Pc的武器种类是非正常的.'/>,"255,0,0",10,MBT_Desc_000099,帐户生成错误
+100,BOX_CREATE_NOTNAME,MBT_Title_000100,账户生成,MBT_Contents_000100,<TC '255:198:0' Text'Pc的名称是非正常的.'/>,"255,0,0",10,MBT_Desc_000100,帐户生成错误
+101,BOX_CREATE_NOTCUSTOMIZE,MBT_Title_000101,账户生成,MBT_Contents_000101,<TC '255:198:0' Text'Pc的自定义信息是非正常的.'/>,"255,0,0",10,MBT_Desc_000101,帐户生成错误
+102,BOX_DELETE_PCINGUILD,MBT_Title_000102,删除人物,MBT_Contents_000102,<TC '255:198:0' Text'所属公会角色无法删除.'/>,"255,0,0",10,MBT_Desc_000102,角色删除错误信息
+103,BOX_DELETE_USERNOTEXISTID5,MBT_Title_000103,删除人物,MBT_Contents_000103,<TC '255:198:0' Text'没有删除的角色.'/>,"255,0,0",10,MBT_Desc_000103,角色删除错误信息
+104,BOX_ARCHLORD_DELETE_NOT,MBT_Title_000104,删除人物,MBT_Contents_000104,<TC '255:198:0' Text'无法删除角色安克罗德.'/>,"255,0,0",10,MBT_Desc_000104,角色删除错误信息(安克罗德)
+105,BOX_CAMP_CREATE_NOT,MBT_Title_000105,不可选择阵营,MBT_Contents_000105,"<TC '255:198:0' Text'阵营比率不相匹配,/n无法选择更多阵营.'/>","255,0,0",10,MBT_Desc_000105,阵营比例超过阵营选择时
+106,BOX_GUILD_CREATE,MBT_Title_000106,公会生成,MBT_Contents_000106,<TC '255:198:0' Text'请输入生成公会名称'/>,"235,203,147",10,MBT_Desc_000106,公会生成
+107,BOX_INVALID_ID_OVERLAP,MBT_Title_000107,不可生成人物,MBT_Contents_000107,<TC '255:198:0' Text'这是已经生成的角色名称.'/>,"255,0,0",10,MBT_Desc_000107,角色生成名字重复
+108,BOX_AUCTION_PURCHASE,MBT_Title_000108,拍卖场,MBT_Contents_000108,<TC '255:198:0' Text'确定要购买吗?'/>,"255,0,0",10,MBT_Desc_000108,拍卖场-物品采购意愿询问
+109,BOX_DELETE_PCHASAUCTION,MBT_Title_000109,不可删除人物,MBT_Contents_000109,"<TC '255:198:0' Text'如果在拍卖场放入物品,/n无法删除角色.'/>","255,0,0",10,MBT_Desc_000109,在拍卖场上登录物品状况下删除时的角色
+110,BOX_ITEMBOX_OPEN,MBT_Title_000110,开启礼物宝盒,MBT_Contents_000110,<TC '255:198:0' Text'要打开礼物宝箱吗?'/>,"235,203,147",10,MBT_Desc_000110,礼物宝箱物品开启询问
+111,BOX_OVER_SENDPACKET,MBT_Title_000111,包裹错误,MBT_Contents_000111,<TC '255:198:0' Text'超过传输标准数据包量.标准时间 [$GetValue1()]秒内 [$GetValue2()]传输两次数据包.'/>,"255,0,0",10,MBT_Desc_000111,一段时期send数据包量超过额定量
+112,BOX_COMMON_ITEM_USE,MBT_Title_000112,$GetValue(),MBT_Contents_000112,<TC '255:198:0' Text'$GetValue1()/n要使用物品吗?'/>,"235,203,147",10,MBT_Desc_000112,物品上点击鼠标双/右
+113,BOX_DUNGEON_OUT,MBT_Title_000113,去地下战场实测,MBT_Contents_000113,"<TC '255:198:0' Text'退出的话,立即离开地下城./n确定要退出吗?'/>","255,0,0",10,MBT_Desc_000113,进入队伍/莱德退出时情况
+114,BOX_WAR_OUT,MBT_Title_000114,进入战场,MBT_Contents_000114,<TC '255:198:0' Text'退出的话离开战场./n确定要退出吗?'/>,"255,0,0",10,MBT_Desc_000114,莱德从战场退出的情况
+115,BOX_SKILL_LEARN,MBT_Title_000115,技能学习,MBT_Contents_000115,<TC '255:198:0' Text'确定学习技能吗?'/>,"235,203,147",10,MBT_Desc_000115,技能学习确认UI
+116,BOX_STAT_LEARN,MBT_Title_000116,变更属性点,MBT_Contents_000116,<TC '255:198:0' Text'确定变更属性点吗?'/>,"235,203,147",10,MBT_Desc_000116,技能使用确认UI
+117,BOX_PARTY_DELETE,MBT_Title_000117,队伍解散,MBT_Contents_000117,<TC '255:198:0' Text'解散队伍吗?'/>,"255,0,0",10,MBT_Desc_000117,队伍解散确认UI
+118,BOX_HACK_WARNING,MBT_Title_000118,黑客警告,MBT_Contents_000118,<TC '255:198:0' Text'感知黑客顺序.'/>,"255,0,0",10,MBT_Desc_000118,骇客程序感知不到
+119,BOX_CERTILIFY_AUTHINVALID2,MBT_Title_000119,认证失败,MBT_Contents_000119,<TC '255:198:0' Text'认证失败.请重新执行'/>,"255,0,0",10,MBT_Desc_000119,运行时验证失败
+120,BOX_WARRANK_FAIL,MBT_Title_000120,战场顺序,MBT_Contents_000120,<TC '255:198:0' Text'只有在战场内才能看见战场顺序信息.'/>,"255,0,0",10,MBT_Desc_000120,不是在战场上是战场UI呼出时
+121,BOX_PVP_CHALLENGE,MBT_Title_000121,申请决斗,MBT_Contents_000121,<TC '255:198:0' Text'允许决斗吗?/n决斗申请者 : $GetValue1()'/>,"235,203,147",10,MBT_Desc_000121,申请决斗情况给申请决斗的PC输出
+122,BOX_INSTANCE_MATCHING_NAME,MBT_Title_000122,人物匹配,MBT_Contents_000122,<TC '255:198:0' Text'$GetValue1()要入场吗?'/>,"255,0,0",10,MBT_Desc_000122,拘留配合-入场拘留名称
+123,BOX_CONNECTION_OFF,MBT_Title_000123,不可连接,MBT_Contents_000123,<TC '255:198:0' Text'请使用正常方法连接!'/>,"255,0,0",10,MBT_Desc_000123,网络运行不畅，连接的情况
+124,BOX_SUBPASSWORD_SET,MBT_Title_000124,设置,MBT_Contents_000124,<TC '255:198:0' Text'要设置2级密码吗?'/>,"255,0,0",10,MBT_Desc_000124,2级密码设置
+125,BOX_SUBPASSWORD_CHANGE,MBT_Title_000125,变更,MBT_Contents_000125,<TC '255:198:0' Text'要变更2级密码吗?'/>,"255,0,0",10,MBT_Desc_000125,2级密码变更
+126,BOX_SUBPASSWORD_CANCEL,MBT_Title_000126,解除,MBT_Contents_000126,<TC '255:198:0' Text'要解除2级密码吗?'/>,"255,0,0",10,MBT_Desc_000126,2级密码解除
+127,BOX_CERTIFY_DIFFSUBPSWD,MBT_Title_000127,二级密码,MBT_Contents_000127,<TC '255:198:0' Text'输入的信息不正确.'/>,"235,203,147",10,MBT_Desc_000127,2级密码不正确
+128,BOX_ACCOUNTSUBPW_INVALID,MBT_Title_000128,二级密码,MBT_Contents_000128,<TC '255:198:0' Text'认证失败.请重新设置!'/>,"235,203,147",10,MBT_Desc_000128,DB错误
+129,BOX_ACCOUNTSUBPW_REG,MBT_Title_000129,二级密码,MBT_Contents_000129,<TC '255:198:0' Text'密码已经设置好了.'/>,"235,203,147",10,MBT_Desc_000129,2级密码登录失败
+130,BOX_ACCOUNTSUBPW_CHANGE,MBT_Title_000130,二级密码,MBT_Contents_000130,<TC '255:198:0' Text'输入的信息不正确.'/>,"235,203,147",10,MBT_Desc_000130,2级密码变更失败
+131,BOX_ACCOUNTSUBPW_UNREG,MBT_Title_000131,二级密码,MBT_Contents_000131,<TC '255:198:0' Text'没有设置密码.设置后请重新试一下.'/>,"235,203,147",10,MBT_Desc_000131,2级密码解除失败
+132,BOX_ACCOUNTSUBPW_CHECK,MBT_Title_000132,二级密码,MBT_Contents_000132,<TC '255:198:0' Text'输入的信息不正确.'/>,"235,203,147",10,MBT_Desc_000132,2级密码确认失败
+133,BOX_HEALING_QUESTION,MBT_Title_000133,治愈,MBT_Contents_000133,<TC '255:198:0' Text'要恢复吗?'/>,"235,203,147",10,MBT_Desc_000133,治疗师选择-治疗确认信息框
+134,BOX_WAR_ARCHLORD,MBT_Title_000134,安克罗德争夺战,MBT_Contents_000134,<TC '255:198:0' Text'[安克罗德争夺战]/n确定入场吗?'/>,"255,0,0",10,MBT_Desc_000134,安克罗德争夺战入场信息框
+135,BOX_ITEMBREAK_GRADE,MBT_Title_000135,分解,MBT_Contents_000135,<TC '255:198:0' Text'相关物品确定要分解吗?/n分解的物品不可能恢复.'/>,"255,0,0",10,MBT_Desc_000135,解散确定消息
+136,BOX_CHANNEL_CHANGE,MBT_Title_000136,频道变更,MBT_Contents_000136,<TC '255:198:0' Text'要向选择的频道移动吗?'/>,"255,0,0",10,MBT_Desc_000136,频道选择确认消息
+137,BOX_RANK_JOIN,MBT_Title_000137,加入排名,MBT_Contents_000137,<TC '255:198:0' Text'向确认点击的网页移动./n要移动吗?'/>,"255,0,0",10,MBT_Desc_000137,网站排名确认消息框
+138,BOX_UNBIND_FAIL_ALREADY,MBT_Title_000138,绑定解除,MBT_Contents_000138,<TC '255:198:0' Text'已经解除绑定/n是无法绑定解除的物品.'/>,"255,0,0",10,MBT_Desc_000138,绑定解除状态，无法解除对象试图解除绑定时
+139,BOX_UNBIND_FAIL_EQUIP,MBT_Title_000139,绑定解除,MBT_Contents_000139,<TC '255:198:0' Text'安装中的物品/n无法解除绑定.'/>,"255,0,0",10,MBT_Desc_000139,安装中物品试图解除绑定
+140,BOX_UNBIND_FAIL_COUNT,MBT_Title_000140,绑定解除,MBT_Contents_000140,<TC '255:198:0' Text'超过绑定解除可能的次数.'/>,"255,0,0",10,MBT_Desc_000140,限制解除绑定次数试图解除超过的物品时
+141,BOX_UNBIND_FAIL_DURABILITY,MBT_Title_000141,绑定解除,MBT_Contents_000141,<TC '255:198:0' Text'消耗的物品/n无法解除绑定.'/>,"255,0,0",10,MBT_Desc_000141,试图解除消耗格局物品绑定时
+142,BOX_UNBIND_FAIL_NEED,MBT_Title_000142,绑定解除,MBT_Contents_000142,<TC '255:198:0' Text'解除绑定必要的/n物品个数不足./n/n必要绑定解除物品个数 : $GetValue1()个'/>,"255,0,0",10,MBT_Desc_000142,解除绑定物品个数不足时
+143,BOX_UNBIND_ITEM,MBT_Title_000143,绑定解除,MBT_Contents_000143,<TC '255:198:0' Text'[$GetValue1()]/n要解除绑定物品吗?/n/n必要绑定解除物品个数: $GetValue2()个'/>,"255,0,0",10,MBT_Desc_000143,解除绑定时确认信息框
+144,BOX_CASHSHOP_PURCHASE,MBT_Title_000144,购买/礼物确认前介绍,MBT_Contents_000144,<TC '255:198:0' Text'包含无法使用的物品./n再次继续进行购买礼物吗?'/>,"255,0,0",10,MBT_Desc_000144,在商品目录上包含自己无法使用的物品时确认信息框
+145,BOX_CASHSHOP_ACCOUNT_SUCCESS,MBT_Title_000145,购买确认,MBT_Contents_000145,<TC '255:198:0' Text'物品以正常状态/n购买./n请确认.'/>,"255,0,0",10,MBT_Desc_000145,正常结算时确认消息框
+146,BOX_CASHSHOP_GIFT_SUCCESS,MBT_Title_000146,物品确认,MBT_Contents_000146,<TC '255:198:0' Text'将物品当做正常礼物.'/>,"255,0,0",10,MBT_Desc_000146,礼物正常完成确认信息框
+147,BOX_CASHSHOP_PURCHASE_FAIL,MBT_Title_000147,同意填充,MBT_Contents_000147,<TC '255:198:0' Text'拥有现金不足./n向填充页面移动吗?'/>,"255,0,0",10,MBT_Desc_000147,拥有现金不足向充钱页面移动信息框
+148,BOX_CASHSHOP_ITEM_USE,MBT_Title_000148,移动缓存资料,MBT_Contents_000148,<TC '255:198:0' Text'往缓存资金/n移动吗??/n/n用缓存资金移动物品无法返还.'/>,"255,0,0",10,MBT_Desc_000148,购买礼物及收费物品使用缓存保管箱移动确认信息框
+149,BOX_CASHSHOP_LIMIT_NOTBUY,MBT_Title_000149,结束销售,MBT_Contents_000149,<TC '255:198:0' Text'[$GetValue1()]物品的/n销售结束无法购入.'/>,"255,0,0",10,MBT_Desc_000149,销售结束试图购买物品
+150,BOX_CASHSHOP_TIME_RENEW,MBT_Title_000150,商店收费更新,MBT_Contents_000150,<TC '255:198:0' Text'收费物品清单正在更新.'/>,"255,0,0",10,MBT_Desc_000150,收费物品更新中输出
+151,BOX_UNUSUAL_PCKICKONE,MBT_Title_000151,使用非正常程序,MBT_Contents_000151,<TC '255:198:0' Text'感知非正常程序内容./n /n程序结束.'/>,"255,0,0",10,MBT_Desc_000151,非正常活动使用的信息框
+152,BOX_EVENT_CANT_MORE_CREATE,MBT_Title_000152,词汇生成活动,MBT_Contents_000152,<TC '255:198:0' Text'照片生成期间 /n只能生成1个角色.'/>,"255,0,0",10,MBT_Desc_000152,角色创建的活动信息框(角色超过1个生成错误信息)(活动结束后删除)
+153,BOX_EVENT_NOTJOIN,MBT_Title_000153,词汇生成活动,MBT_Contents_000153,<TC '255:198:0' Text'正式服务开启后 /n才可以利用.'/>,"255,0,0",10,MBT_Desc_000153,角色创建的活动信息框(游戏开始试图将错误信息)(活动结束后删除)
+154,BOX_REPAIRITEM_USE,MBT_Title_000154,便携式修理工具,MBT_Contents_000154,<TC '255:198:0' Text'要修理选择的物品吗?/n消耗便携式修理工具.'/>,"255,0,0",10,MBT_Desc_000154,使用便携式修理工具
+155,BOX_REPORT_HOMEPAGE,MBT_Title_000155,疑问/申告,MBT_Contents_000155,<TC '255:198:0' Text'向确认点击网页移动./n要移动吗?'/>,"255,0,0",10,MBT_Desc_000155,咨询/举报双击按钮时出现信息框
+156,BOX_CHARACTER_CHANGE_NAME,MBT_Title_000156,人物姓名变更,MBT_Contents_000156,<TC '255:198:0' Text'输入变更的名称'/>,"255,0,0",10,MBT_Desc_000156,角色名称变更时输出信息盒子
+157,BOX_GUILD_CHANGE_NAME,MBT_Title_000157,公会名称变更,MBT_Contents_000157,<TC '255:198:0' Text'输入变更的公会名称'/>,"255,0,0",10,MBT_Desc_000157,公会名称变更时输出信息盒子
+158,BOX_CASHSHOP_SECURITY_LIMIT,MBT_Title_000158,限制缓存使用,MBT_Contents_000158,<TC '255:198:0' Text'在相关游戏中不可以使用现金你的服务>网络现金>请在现金保护设置菜单中设置'/>,"255,0,0",10,MBT_Desc_000158,无法设置使用现金时在游戏中试图使用现金输出信息箱
+159,BOX_CASHSHOP_TESTSERVER_NOTCHARGE,,不可充钱,,<TC '255:198:0' Text'相关服务器中无法使用该技能.'/>,"255,0,0",10,,在测试服务器不可充钱
+160,BOX_AUTOCHECK_BLOCK,,不可连接,,<TC '255:198:0' Text'用奥托判断./n相关账户 $GetValue1()小时内/n无法连接.'/>,,,,

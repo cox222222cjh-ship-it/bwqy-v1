@@ -1,0 +1,503 @@
+TID,WorldTID,MapX,MapY,SectorCountX,SectorCountY,LevelName,Desc,Path
+分离器,世界地图TID,地图X号码,地图Y号码,扇形区X个数,扇形区Y个数,韩文名,说明,文件位置
+2,,,,,,,,
+U32,U32,U32,U32,U32,U32,CBwString,CBwString,string
+1,1,0,0,,,人物生成(高级),完成,Terrain/Loginfield/Create_Amihigh/
+2,2,0,0,,,人物生成(删除),完成,Terrain/Loginfield/Create_Demolition/
+3,3,0,0,,,人物选择(高级),完成,Terrain/Loginfield/Select_Amihigh/
+4,4,0,0,,,人物选择(删除),完成,Terrain/Loginfield/Select_Demolition/
+5,10000,0,0,,,测试地图,完成,Terrain/TestMap/
+6,10001,0,0,,,人物工具,完成,Terrain/ModelTool/
+7,10002,0,0,,,测试用场地,完成,Terrain/InstanceDungeon/Test_Dungeon/
+8,10003,0,0,,,GM 地图,完成,Terrain/BattleField/Occupation/
+9,10004,0,0,,,等级设计专用(再装订),完成,Terrain/TestMap01/
+10,10005,0,0,,,等级设计专用(汇总),完成,Terrain/TestMap02/
+11,3000,0,0,,,地下城场地,完成,Terrain/Dungeonfield/Aimhigh/Forest/
+12,3001,0,1,,,地下城场地闲置,,Terrain/Dungeonfield/Aimhigh/300_206/
+13,3002,1,0,,,地下城场地闲置,,Terrain/Dungeonfield/Aimhigh/301_205/
+14,3003,1,1,,,地下城场地闲置,,Terrain/Dungeonfield/Aimhigh/301_206/
+15,2000,0,0,,,背景定制,测试地图,Terrain/worldfield/000_000/
+16,2000,0,1,,,,,Terrain/worldfield/000_001/
+17,2000,0,2,,,,,Terrain/worldfield/000_002/
+18,2000,0,3,,,,,Terrain/worldfield/000_003/
+19,2000,0,4,,,,,Terrain/worldfield/000_004/
+20,2000,0,5,,,,,Terrain/worldfield/000_005/
+21,2000,0,6,,,,,Terrain/worldfield/000_006/
+22,2000,0,7,,,,,Terrain/worldfield/000_007/
+23,2000,0,8,,,,,Terrain/worldfield/000_008/
+24,2000,0,9,,,,,Terrain/worldfield/000_009/
+25,2000,0,10,,,,,Terrain/worldfield/000_010/
+26,2000,0,11,,,,,Terrain/worldfield/000_011/
+27,2000,0,12,,,,,Terrain/worldfield/000_012/
+28,2000,0,13,,,,,Terrain/worldfield/000_013/
+29,2000,0,14,,,,,Terrain/worldfield/000_014/
+30,2000,0,15,,,,,Terrain/worldfield/000_015/
+31,2000,0,16,,,,,Terrain/worldfield/000_016/
+32,2000,0,17,,,,,Terrain/worldfield/000_017/
+33,2000,1,0,,,,,Terrain/worldfield/001_000/
+34,2000,1,1,,,,,Terrain/worldfield/001_001/
+35,2000,1,2,,,,,Terrain/worldfield/001_002/
+36,2000,1,3,,,,,Terrain/worldfield/001_003/
+37,2000,1,4,,,,,Terrain/worldfield/001_004/
+38,2000,1,5,,,,,Terrain/worldfield/001_005/
+39,2000,1,6,,,,,Terrain/worldfield/001_006/
+40,2000,1,7,,,,,Terrain/worldfield/001_007/
+41,2000,1,8,,,,,Terrain/worldfield/001_008/
+42,2000,1,9,,,,,Terrain/worldfield/001_009/
+43,2000,1,10,,,,,Terrain/worldfield/001_010/
+44,2000,1,11,,,,,Terrain/worldfield/001_011/
+45,2000,1,12,,,,,Terrain/worldfield/001_012/
+46,2000,1,13,,,,,Terrain/worldfield/001_013/
+47,2000,1,14,,,,,Terrain/worldfield/001_014/
+48,2000,1,15,,,,,Terrain/worldfield/001_015/
+49,2000,1,16,,,,,Terrain/worldfield/001_016/
+50,2000,1,17,,,,,Terrain/worldfield/001_017/
+51,2000,2,0,,,,,Terrain/worldfield/002_000/
+52,2000,2,1,,,,,Terrain/worldfield/002_001/
+53,2000,2,2,,,,,Terrain/worldfield/002_002/
+54,2000,2,3,,,,,Terrain/worldfield/002_003/
+55,2000,2,4,,,,,Terrain/worldfield/002_004/
+56,2000,2,5,,,,,Terrain/worldfield/002_005/
+57,2000,2,6,,,,,Terrain/worldfield/002_006/
+58,2000,2,7,,,,完成,Terrain/worldfield/002_007/
+59,2000,2,8,,,,完成,Terrain/worldfield/002_008/
+60,2000,2,9,,,,完成,Terrain/worldfield/002_009/
+61,2000,2,10,,,,完成,Terrain/worldfield/002_010/
+62,2000,2,11,,,,完成,Terrain/worldfield/002_011/
+63,2000,2,12,,,,,Terrain/worldfield/002_012/
+64,2000,2,13,,,,,Terrain/worldfield/002_013/
+65,2000,2,14,,,,,Terrain/worldfield/002_014/
+66,2000,2,15,,,,,Terrain/worldfield/002_015/
+67,2000,2,16,,,,,Terrain/worldfield/002_016/
+68,2000,2,17,,,,,Terrain/worldfield/002_017/
+69,2000,3,0,,,,,Terrain/worldfield/003_000/
+70,2000,3,1,,,,,Terrain/worldfield/003_001/
+71,2000,3,2,,,,,Terrain/worldfield/003_002/
+72,2000,3,3,,,,,Terrain/worldfield/003_003/
+73,2000,3,4,,,,,Terrain/worldfield/003_004/
+74,2000,3,5,,,,,Terrain/worldfield/003_005/
+75,2000,3,6,,,,完成,Terrain/worldfield/003_006/
+76,2000,3,7,,,,完成,Terrain/worldfield/003_007/
+77,2000,3,8,,,,完成,Terrain/worldfield/003_008/
+78,2000,3,9,,,,完成,Terrain/worldfield/003_009/
+79,2000,3,10,,,,完成,Terrain/worldfield/003_010/
+80,2000,3,11,,,,完成,Terrain/worldfield/003_011/
+81,2000,3,12,,,,,Terrain/worldfield/003_012/
+82,2000,3,13,,,,,Terrain/worldfield/003_013/
+83,2000,3,14,,,,,Terrain/worldfield/003_014/
+84,2000,3,15,,,,,Terrain/worldfield/003_015/
+85,2000,3,16,,,,,Terrain/worldfield/003_016/
+86,2000,3,17,,,,,Terrain/worldfield/003_017/
+87,2000,4,0,,,,,Terrain/worldfield/004_000/
+88,2000,4,1,,,,,Terrain/worldfield/004_001/
+89,2000,4,2,,,,,Terrain/worldfield/004_002/
+90,2000,4,3,,,,,Terrain/worldfield/004_003/
+91,2000,4,4,,,,,Terrain/worldfield/004_004/
+92,2000,4,5,,,,,Terrain/worldfield/004_005/
+93,2000,4,6,,,,完成,Terrain/worldfield/004_006/
+94,2000,4,7,,,,完成,Terrain/worldfield/004_007/
+95,2000,4,8,,,,完成,Terrain/worldfield/004_008/
+96,2000,4,9,,,,完成,Terrain/worldfield/004_009/
+97,2000,4,10,,,,完成,Terrain/worldfield/004_010/
+98,2000,4,11,,,,完成,Terrain/worldfield/004_011/
+99,2000,4,12,,,,,Terrain/worldfield/004_012/
+100,2000,4,13,,,,,Terrain/worldfield/004_013/
+101,2000,4,14,,,,,Terrain/worldfield/004_014/
+102,2000,4,15,,,,,Terrain/worldfield/004_015/
+103,2000,4,16,,,,,Terrain/worldfield/004_016/
+104,2000,4,17,,,,,Terrain/worldfield/004_017/
+105,2000,5,0,,,,,Terrain/worldfield/005_000/
+106,2000,5,1,,,,,Terrain/worldfield/005_001/
+107,2000,5,2,,,,,Terrain/worldfield/005_002/
+108,2000,5,3,,,,,Terrain/worldfield/005_003/
+109,2000,5,4,,,,,Terrain/worldfield/005_004/
+110,2000,5,5,,,,,Terrain/worldfield/005_005/
+111,2000,5,6,,,,完成,Terrain/worldfield/005_006/
+112,2000,5,7,,,,完成,Terrain/worldfield/005_007/
+113,2000,5,8,,,,完成,Terrain/worldfield/005_008/
+114,2000,5,9,,,,完成,Terrain/worldfield/005_009/
+115,2000,5,10,,,,,Terrain/worldfield/005_010/
+116,2000,5,11,,,,,Terrain/worldfield/005_011/
+117,2000,5,12,,,,,Terrain/worldfield/005_012/
+118,2000,5,13,,,,,Terrain/worldfield/005_013/
+119,2000,5,14,,,,,Terrain/worldfield/005_014/
+120,2000,5,15,,,,,Terrain/worldfield/005_015/
+121,2000,5,16,,,,,Terrain/worldfield/005_016/
+122,2000,5,17,,,,,Terrain/worldfield/005_017/
+123,2000,6,0,,,,,Terrain/worldfield/006_000/
+124,2000,6,1,,,,,Terrain/worldfield/006_001/
+125,2000,6,2,,,,,Terrain/worldfield/006_002/
+126,2000,6,3,,,,,Terrain/worldfield/006_003/
+127,2000,6,4,,,,,Terrain/worldfield/006_004/
+128,2000,6,5,,,,,Terrain/worldfield/006_005/
+129,2000,6,6,,,,,Terrain/worldfield/006_006/
+130,2000,6,7,,,,完成,Terrain/worldfield/006_007/
+131,2000,6,8,,,,完成,Terrain/worldfield/006_008/
+132,2000,6,9,,,,完成,Terrain/worldfield/006_009/
+133,2000,6,10,,,,,Terrain/worldfield/006_010/
+134,2000,6,11,,,,,Terrain/worldfield/006_011/
+135,2000,6,12,,,,,Terrain/worldfield/006_012/
+136,2000,6,13,,,,,Terrain/worldfield/006_013/
+137,2000,6,14,,,,,Terrain/worldfield/006_014/
+138,2000,6,15,,,,,Terrain/worldfield/006_015/
+139,2000,6,16,,,,,Terrain/worldfield/006_016/
+140,2000,6,17,,,,,Terrain/worldfield/006_017/
+141,2000,7,0,,,,,Terrain/worldfield/007_000/
+142,2000,7,1,,,,,Terrain/worldfield/007_001/
+143,2000,7,2,,,,,Terrain/worldfield/007_002/
+144,2000,7,3,,,,,Terrain/worldfield/007_003/
+145,2000,7,4,,,,,Terrain/worldfield/007_004/
+146,2000,7,5,,,,,Terrain/worldfield/007_005/
+147,2000,7,6,,,,完成,Terrain/worldfield/007_006/
+148,2000,7,7,,,,完成,Terrain/worldfield/007_007/
+149,2000,7,8,,,,完成,Terrain/worldfield/007_008/
+150,2000,7,9,,,,完成,Terrain/worldfield/007_009/
+151,2000,7,10,,,,完成,Terrain/worldfield/007_010/
+152,2000,7,11,,,,完成,Terrain/worldfield/007_011/
+153,2000,7,12,,,,,Terrain/worldfield/007_012/
+154,2000,7,13,,,,,Terrain/worldfield/007_013/
+155,2000,7,14,,,,,Terrain/worldfield/007_014/
+156,2000,7,15,,,,,Terrain/worldfield/007_015/
+157,2000,7,16,,,,,Terrain/worldfield/007_016/
+158,2000,7,17,,,,,Terrain/worldfield/007_017/
+159,2000,8,0,,,,,Terrain/worldfield/008_000/
+160,2000,8,1,,,,,Terrain/worldfield/008_001/
+161,2000,8,2,,,,,Terrain/worldfield/008_002/
+162,2000,8,3,,,,,Terrain/worldfield/008_003/
+163,2000,8,4,,,,,Terrain/worldfield/008_004/
+164,2000,8,5,,,,,Terrain/worldfield/008_005/
+165,2000,8,6,,,,,Terrain/worldfield/008_006/
+166,2000,8,7,,,,,Terrain/worldfield/008_007/
+167,2000,8,8,,,,,Terrain/worldfield/008_008/
+168,2000,8,9,,,,,Terrain/worldfield/008_009/
+169,2000,8,10,,,,完成,Terrain/worldfield/008_010/
+170,2000,8,11,,,,完成,Terrain/worldfield/008_011/
+171,2000,8,12,,,,完成,Terrain/worldfield/008_012/
+172,2000,8,13,,,,,Terrain/worldfield/008_013/
+173,2000,8,14,,,,,Terrain/worldfield/008_014/
+174,2000,8,15,,,,,Terrain/worldfield/008_015/
+175,2000,8,16,,,,,Terrain/worldfield/008_016/
+176,2000,8,17,,,,,Terrain/worldfield/008_017/
+177,2000,9,0,,,,,Terrain/worldfield/009_000/
+178,2000,9,1,,,,,Terrain/worldfield/009_001/
+179,2000,9,2,,,,,Terrain/worldfield/009_002/
+180,2000,9,3,,,,,Terrain/worldfield/009_003/
+181,2000,9,4,,,,,Terrain/worldfield/009_004/
+182,2000,9,5,,,,,Terrain/worldfield/009_005/
+183,2000,9,6,,,,,Terrain/worldfield/009_006/
+184,2000,9,7,,,,,Terrain/worldfield/009_007/
+185,2000,9,8,,,,,Terrain/worldfield/009_008/
+186,2000,9,9,,,,,Terrain/worldfield/009_009/
+187,2000,9,10,,,,,Terrain/worldfield/009_010/
+188,2000,9,11,,,,,Terrain/worldfield/009_011/
+189,2000,9,12,,,,完成,Terrain/worldfield/009_012/
+190,2000,9,13,,,,完成,Terrain/worldfield/009_013/
+191,2000,9,14,,,,完成,Terrain/worldfield/009_014/
+192,2000,9,15,,,,完成,Terrain/worldfield/009_015/
+193,2000,9,16,,,,完成,Terrain/worldfield/009_016/
+194,2000,9,17,,,,,Terrain/worldfield/009_017/
+195,2000,10,0,,,,,Terrain/worldfield/010_000/
+196,2000,10,1,,,,,Terrain/worldfield/010_001/
+197,2000,10,2,,,,,Terrain/worldfield/010_002/
+198,2000,10,3,,,,,Terrain/worldfield/010_003/
+199,2000,10,4,,,,,Terrain/worldfield/010_004/
+200,2000,10,5,,,,,Terrain/worldfield/010_005/
+201,2000,10,6,,,,,Terrain/worldfield/010_006/
+202,2000,10,7,,,,,Terrain/worldfield/010_007/
+203,2000,10,8,,,,,Terrain/worldfield/010_008/
+204,2000,10,9,,,,,Terrain/worldfield/010_009/
+205,2000,10,10,,,,,Terrain/worldfield/010_010/
+206,2000,10,11,,,,,Terrain/worldfield/010_011/
+207,2000,10,12,,,,,Terrain/worldfield/010_012/
+208,2000,10,13,,,,完成,Terrain/worldfield/010_013/
+209,2000,10,14,,,,完成,Terrain/worldfield/010_014/
+210,2000,10,15,,,,完成,Terrain/worldfield/010_015/
+211,2000,10,16,,,,完成,Terrain/worldfield/010_016/
+212,2000,10,17,,,,,Terrain/worldfield/010_017/
+213,2000,11,0,,,,,Terrain/worldfield/011_000/
+214,2000,11,1,,,,,Terrain/worldfield/011_001/
+215,2000,11,2,,,,,Terrain/worldfield/011_002/
+216,2000,11,3,,,,,Terrain/worldfield/011_003/
+217,2000,11,4,,,,,Terrain/worldfield/011_004/
+218,2000,11,5,,,,,Terrain/worldfield/011_005/
+219,2000,11,6,,,,,Terrain/worldfield/011_006/
+220,2000,11,7,,,,,Terrain/worldfield/011_007/
+221,2000,11,8,,,,,Terrain/worldfield/011_008/
+222,2000,11,9,,,,,Terrain/worldfield/011_009/
+223,2000,11,10,,,,,Terrain/worldfield/011_010/
+224,2000,11,11,,,,,Terrain/worldfield/011_011/
+225,2000,11,12,,,,完成,Terrain/worldfield/011_012/
+226,2000,11,13,,,,完成,Terrain/worldfield/011_013/
+227,2000,11,14,,,,完成,Terrain/worldfield/011_014/
+228,2000,11,15,,,,完成,Terrain/worldfield/011_015/
+229,2000,11,16,,,,,Terrain/worldfield/011_016/
+230,2000,11,17,,,,,Terrain/worldfield/011_017/
+231,2000,12,0,,,,,Terrain/worldfield/012_000/
+232,2000,12,1,,,,,Terrain/worldfield/012_001/
+233,2000,12,2,,,,,Terrain/worldfield/012_002/
+234,2000,12,3,,,,,Terrain/worldfield/012_003/
+235,2000,12,4,,,,,Terrain/worldfield/012_004/
+236,2000,12,5,,,,,Terrain/worldfield/012_005/
+237,2000,12,6,,,,,Terrain/worldfield/012_006/
+238,2000,12,7,,,,,Terrain/worldfield/012_007/
+239,2000,12,8,,,,,Terrain/worldfield/012_008/
+240,2000,12,9,,,,,Terrain/worldfield/012_009/
+241,2000,12,10,,,,,Terrain/worldfield/012_010/
+242,2000,12,11,,,,,Terrain/worldfield/012_011/
+243,2000,12,12,,,,完成,Terrain/worldfield/012_012/
+244,2000,12,13,,,,完成,Terrain/worldfield/012_013/
+245,2000,12,14,,,,完成,Terrain/worldfield/012_014/
+246,2000,12,15,,,,完成,Terrain/worldfield/012_015/
+247,2000,12,16,,,,完成,Terrain/worldfield/012_016/
+248,2000,12,17,,,,完成,Terrain/worldfield/012_017/
+249,2000,13,0,,,,,Terrain/worldfield/013_000/
+250,2000,13,1,,,,,Terrain/worldfield/013_001/
+251,2000,13,2,,,,,Terrain/worldfield/013_002/
+252,2000,13,3,,,,,Terrain/worldfield/013_003/
+253,2000,13,4,,,,,Terrain/worldfield/013_004/
+254,2000,13,5,,,,,Terrain/worldfield/013_005/
+255,2000,13,6,,,,,Terrain/worldfield/013_006/
+256,2000,13,7,,,,,Terrain/worldfield/013_007/
+257,2000,13,8,,,,,Terrain/worldfield/013_008/
+258,2000,13,9,,,,,Terrain/worldfield/013_009/
+259,2000,13,10,,,,,Terrain/worldfield/013_010/
+260,2000,13,11,,,,,Terrain/worldfield/013_011/
+261,2000,13,12,,,,,Terrain/worldfield/013_012/
+262,2000,13,13,,,,完成,Terrain/worldfield/013_013/
+263,2000,13,14,,,,完成,Terrain/worldfield/013_014/
+264,2000,13,15,,,,完成,Terrain/worldfield/013_015/
+265,2000,13,16,,,,完成,Terrain/worldfield/013_016/
+266,2000,13,17,,,,,Terrain/worldfield/013_017/
+267,2000,14,0,,,,,Terrain/worldfield/014_000/
+268,2000,14,1,,,,,Terrain/worldfield/014_001/
+269,2000,14,2,,,,,Terrain/worldfield/014_002/
+270,2000,14,3,,,,,Terrain/worldfield/014_003/
+271,2000,14,4,,,,,Terrain/worldfield/014_004/
+272,2000,14,5,,,,,Terrain/worldfield/014_005/
+273,2000,14,6,,,,,Terrain/worldfield/014_006/
+274,2000,14,7,,,,,Terrain/worldfield/014_007/
+275,2000,14,8,,,,,Terrain/worldfield/014_008/
+276,2000,14,9,,,,,Terrain/worldfield/014_009/
+277,2000,14,10,,,,,Terrain/worldfield/014_010/
+278,2000,14,11,,,,,Terrain/worldfield/014_011/
+279,2000,14,12,,,,,Terrain/worldfield/014_012/
+280,2000,14,13,,,,完成,Terrain/worldfield/014_013/
+281,2000,14,14,,,,完成,Terrain/worldfield/014_014/
+282,2000,14,15,,,,完成,Terrain/worldfield/014_015/
+283,2000,14,16,,,,完成,Terrain/worldfield/014_016/
+284,2000,14,17,,,,,Terrain/worldfield/014_017/
+285,2000,15,0,,,,,Terrain/worldfield/015_000/
+286,2000,15,1,,,,,Terrain/worldfield/015_001/
+287,2000,15,2,,,,,Terrain/worldfield/015_002/
+288,2000,15,3,,,,,Terrain/worldfield/015_003/
+289,2000,15,4,,,,,Terrain/worldfield/015_004/
+290,2000,15,5,,,,,Terrain/worldfield/015_005/
+291,2000,15,6,,,,,Terrain/worldfield/015_006/
+292,2000,15,7,,,,,Terrain/worldfield/015_007/
+293,2000,15,8,,,,,Terrain/worldfield/015_008/
+294,2000,15,9,,,,,Terrain/worldfield/015_009/
+295,2000,15,10,,,,,Terrain/worldfield/015_010/
+296,2000,15,11,,,,,Terrain/worldfield/015_011/
+297,2000,15,12,,,,,Terrain/worldfield/015_012/
+298,2000,15,13,,,,,Terrain/worldfield/015_013/
+299,2000,15,14,,,,,Terrain/worldfield/015_014/
+300,2000,15,15,,,,,Terrain/worldfield/015_015/
+301,2000,15,16,,,,,Terrain/worldfield/015_016/
+302,2000,15,17,,,,,Terrain/worldfield/015_017/
+303,2000,16,0,,,,,Terrain/worldfield/016_000/
+304,2000,16,1,,,,,Terrain/worldfield/016_001/
+305,2000,16,2,,,,,Terrain/worldfield/016_002/
+306,2000,16,3,,,,,Terrain/worldfield/016_003/
+307,2000,16,4,,,,,Terrain/worldfield/016_004/
+308,2000,16,5,,,,,Terrain/worldfield/016_005/
+309,2000,16,6,,,,,Terrain/worldfield/016_006/
+310,2000,16,7,,,,,Terrain/worldfield/016_007/
+311,2000,16,8,,,,,Terrain/worldfield/016_008/
+312,2000,16,9,,,,,Terrain/worldfield/016_009/
+313,2000,16,10,,,,,Terrain/worldfield/016_010/
+314,2000,16,11,,,,,Terrain/worldfield/016_011/
+315,2000,16,12,,,,,Terrain/worldfield/016_012/
+316,2000,16,13,,,,,Terrain/worldfield/016_013/
+317,2000,16,14,,,,,Terrain/worldfield/016_014/
+318,2000,16,15,,,,,Terrain/worldfield/016_015/
+319,2000,16,16,,,,,Terrain/worldfield/016_016/
+320,2000,16,17,,,,,Terrain/worldfield/016_017/
+321,2000,17,0,,,,,Terrain/worldfield/017_000/
+322,2000,17,1,,,,,Terrain/worldfield/017_001/
+323,2000,17,2,,,,,Terrain/worldfield/017_002/
+324,2000,17,3,,,,,Terrain/worldfield/017_003/
+325,2000,17,4,,,,,Terrain/worldfield/017_004/
+326,2000,17,5,,,,,Terrain/worldfield/017_005/
+327,2000,17,6,,,,,Terrain/worldfield/017_006/
+328,2000,17,7,,,,,Terrain/worldfield/017_007/
+329,2000,17,8,,,,,Terrain/worldfield/017_008/
+330,2000,17,9,,,,,Terrain/worldfield/017_009/
+331,2000,17,10,,,,,Terrain/worldfield/017_010/
+332,2000,17,11,,,,,Terrain/worldfield/017_011/
+333,2000,17,12,,,,,Terrain/worldfield/017_012/
+334,2000,17,13,,,,,Terrain/worldfield/017_013/
+335,2000,17,14,,,,,Terrain/worldfield/017_014/
+336,2000,17,15,,,,,Terrain/worldfield/017_015/
+337,2000,17,16,,,,,Terrain/worldfield/017_016/
+338,2000,17,17,,,,,Terrain/worldfield/017_017/
+339,2001,0,0,,,贝特尔克拉温德-有风的山谷,完成,Terrain/BattleField/NewHero/
+340,2002,0,0,,,贝特尔克拉温德 - 光芒普照的盆地,完成,Terrain/BattleField/EventBattle2/
+341,2003,0,0,,,贝特尔克拉温德 - 满是伤痕的大地,完成,Terrain/BattleField/Hero/
+342,2004,0,0,,,贝特尔克拉温德 - 圆滚滚的丘陵地,完成,Terrain/BattleField/RoundfloorNest/
+343,2005,0,0,,,贝特尔克拉温德 - 凌晨的露水沙漠,完成,Terrain/BattleField/DesrtDew/
+344,2006,0,0,,,贝特尔克拉温德 - 星屑大地,完成,Terrain/BattleField/PieceoflandStars/000_000/
+345,2006,1,0,,,贝特尔克拉温德 - 星屑大地,完成,Terrain/BattleField/PieceoflandStars/100_000/
+346,2006,0,0,,,贝特尔克拉温德 - 星屑大地,完成,Terrain/BattleField/PieceoflandStars/
+347,2500,0,0,,,大城市 - 高级城市,完成,Terrain/TownField/Amihigh/
+348,2501,0,0,,,大城市 - 删除城市,完成,Terrain/TownField/Demolition/
+349,1004,0,0,,,霸王之决 (测试用),完成,Terrain/BattleField/Deathmatch/
+350,1005,0,0,,,斯蒂尔普瑞斯  大规模战场,完成,Terrain/BattleField/SteelBreath_Invasion/
+351,1006,0,0,,,班迪路娜 -大规模战场,完成,Terrain/BattleField/Bandiluna_Invasion/
+352,1007,0,0,,,英雄战(更新) - 大规模战场,完成,Terrain/BattleField/WarlikeHero/
+353,1008,0,0,,,圣物争夺战(更新) - 大规模战场,完成,Terrain/BattleField/Halidom/
+354,1009,0,0,,,战场暗杀战(旧) - 大规模战场,完成,Terrain/BattleField/Assassin/
+355,1010,0,0,,,战场圣物破坏战(新) - 大规模战场,完成,Terrain/BattleField/Destroy/
+356,1011,0,0,,,大规模精英战 - 大规模战场,完成,Terrain/BattleField/RaceWar/
+357,1012,0,0,,,暗杀战(新)- 大规模战场,完成,Terrain/BattleField/Sagitta/
+358,1005,0,0,,,斯蒂尔普瑞斯  大规模战场,完成,Terrain/BattleField/SteelBreath_Invasion/
+359,1006,0,0,,,班迪路娜 -大规模战场,完成,Terrain/BattleField/Bandiluna_Invasion/
+360,1100,0,0,,,小规模战场 - 黑色马鬃高地(Lv.30~40),完成,Terrain/BattleField/BlackmaneHighland/
+361,1101,0,0,,,小规模战场 - 黑色马鬃高地(Lv.41~45),完成,Terrain/BattleField/BlackmaneHighland/
+362,1102,0,0,,,小规模战场 - 黑色马鬃高地(Lv.46~50),完成,Terrain/BattleField/BlackmaneHighland/
+363,1103,0,0,,,小规模战场 - 黑色马鬃高地(Lv.51~55),完成,Terrain/BattleField/BlackmaneHighland/
+364,1110,0,0,,,小规模战场 -泪光火石般的大地(Lv.30~40),完成,Terrain/BattleField/Calledtheplains/
+365,1111,0,0,,,小规模战场 -泪光火石般的大地(Lv.41~45),完成,Terrain/BattleField/Calledtheplains/
+366,1112,0,0,,,小规模战场 -泪光火石般的大地(Lv.46~50),完成,Terrain/BattleField/Calledtheplains/
+367,1113,0,0,,,小规模战场 -泪光火石般的大地(Lv.51~55),完成,Terrain/BattleField/Calledtheplains/
+368,1120,0,0,,,小规模战场 -叹息的山谷(Lv.30~40),完成,Terrain/BattleField/EventBattle/
+369,1121,0,0,,,小规模战场 -叹息的山谷(Lv.41~45),完成,Terrain/BattleField/EventBattle/
+370,1122,0,0,,,小规模战场 -叹息的山谷(Lv.46~50),完成,Terrain/BattleField/EventBattle/
+371,1123,0,0,,,小规模战场 -叹息的山谷(Lv.51~55),完成,Terrain/BattleField/EventBattle/
+372,1130,0,0,,,小规模战场 - 阿修罗剑道场(Lv.30~40),完成,Terrain/BattleField/Occupation/
+373,1131,0,0,,,小规模战场 - 阿修罗剑道场(Lv.41~45),完成,Terrain/BattleField/Occupation/
+374,1132,0,0,,,小规模战场 - 阿修罗剑道场(Lv.46~50),完成,Terrain/BattleField/Occupation/
+375,1133,0,0,,,小规模战场 - 阿修罗剑道场(Lv.51~55),完成,Terrain/BattleField/Occupation/
+376,4000,0,0,,,洛坎的实验室(普通),完成,Terrain/InstanceDungeon/Amihigh/Laboratory_Rokan/
+377,4001,0,0,,,洛坎的实验室(困难),完成,Terrain/InstanceDungeon/Amihigh/Laboratory_Rokan/
+378,4002,0,0,,,洛坎的实验室(极困难),完成,Terrain/InstanceDungeon/Amihigh/Laboratory_Rokan/
+379,4003,0,0,,,洛坎的实验室(炼狱),完成,Terrain/InstanceDungeon/Amihigh/Laboratory_Rokan_Hell/
+380,4010,0,0,,,深渊神殿(普通),完成,Terrain/InstanceDungeon/Amihigh/Temple_Abyss/
+381,4011,0,0,,,深渊神殿(困难),完成,Terrain/InstanceDungeon/Amihigh/Temple_Abyss/
+382,4012,0,0,,,深渊神殿(极困难),完成,Terrain/InstanceDungeon/Amihigh/Temple_Abyss/
+383,4013,0,0,,,深渊神殿(炼狱),完成,Terrain/InstanceDungeon/Amihigh/Temple_Abyss_Hell/
+384,4020,0,0,,,奎里奥德矿山(普通),完成,Terrain/InstanceDungeon/Amihigh/Curiode_mine/
+385,4021,0,0,,,奎里奥德矿山(困难),完成,Terrain/InstanceDungeon/Amihigh/Curiode_mine/
+386,4022,0,0,,,奎里奥德矿山(极困难),完成,Terrain/InstanceDungeon/Amihigh/Curiode_mine/
+387,4023,0,0,,,奎里奥德矿山(炼狱),完成,Terrain/InstanceDungeon/Amihigh/Curiode_mine_Hell/
+388,4030,0,0,,,火焰祭坛(普通),完成,Terrain/InstanceDungeon/Amihigh/Flame_Altar/
+389,4031,0,0,,,火焰祭坛(困难),完成,Terrain/InstanceDungeon/Amihigh/Flame_Altar/
+390,4032,0,0,,,火焰祭坛(极困难),完成,Terrain/InstanceDungeon/Amihigh/Flame_Altar/
+391,4033,0,0,,,火焰祭坛(炼狱),完成,Terrain/InstanceDungeon/Amihigh/Flame_Altar_Hell/
+392,4040,0,0,,,死亡寺院(普通),完成,Terrain/InstanceDungeon/Amihigh/Temple_Death/
+393,4041,0,0,,,死亡寺院(困难),完成,Terrain/InstanceDungeon/Amihigh/Temple_Death/
+394,4042,0,0,,,死亡寺院(极困难),完成,Terrain/InstanceDungeon/Amihigh/Temple_Death/
+395,4043,0,0,,,死亡寺院(炼狱),完成,Terrain/InstanceDungeon/Amihigh/Temple_Death_Hell/
+396,4050,0,0,,,阿罗汉浮游城(普通),完成,Terrain/InstanceDungeon/Amihigh/Castle_Arahan/
+397,4051,0,0,,,阿罗汉浮游城(困难),完成,Terrain/InstanceDungeon/Amihigh/Castle_Arahan/
+398,4052,0,0,,,阿罗汉浮游城(极困难),完成,Terrain/InstanceDungeon/Amihigh/Castle_Arahan/
+399,4053,0,0,,,阿罗汉浮游城(炼狱),完成,Terrain/InstanceDungeon/Amihigh/Castle_Arahan_Hell/
+400,4060,0,0,,,克拉伍德活体实验室(普通),完成,Terrain/InstanceDungeon/Amihigh/Laboratory_Kraud/
+401,4061,0,0,,,克拉伍德活体实验室(困难),完成,Terrain/InstanceDungeon/Amihigh/Laboratory_Kraud/
+402,4062,0,0,,,克拉伍德活体实验室(极困难),完成,Terrain/InstanceDungeon/Amihigh/Laboratory_Kraud/
+403,4063,0,0,,,克拉伍德活体实验室(炼狱),完成,Terrain/InstanceDungeon/Amihigh/Laboratory_Kraud_Hell/
+404,4070,0,0,,,火龙巢穴(普通),完成,Terrain/InstanceDungeon/Amihigh/FlameDragon_Lair/
+405,4071,0,0,,,火龙巢穴(困难),完成,Terrain/InstanceDungeon/Amihigh/FlameDragon_Lair/
+406,4072,0,0,,,火龙巢穴(极困难),完成,Terrain/InstanceDungeon/Amihigh/FlameDragon_Lair/
+407,4073,0,0,,,火龙巢穴(炼狱),完成,Terrain/InstanceDungeon/Amihigh/FlameDragon_Lair_Hell/
+408,4080,0,0,,,恶鬼峡谷(普通),完成,Terrain/InstanceDungeon/Amihigh/EvilSpirit_Valley/
+409,4081,0,0,,,恶鬼峡谷(困难),完成,Terrain/InstanceDungeon/Amihigh/EvilSpirit_Valley/
+410,4082,0,0,,,恶鬼峡谷(极困难),完成,Terrain/InstanceDungeon/Amihigh/EvilSpirit_Valley/
+411,4083,0,0,,,恶鬼峡谷(炼狱),完成,Terrain/InstanceDungeon/Amihigh/EvilSpirit_Valley_Hell/
+412,4090,0,0,,,黑暗要塞(普通),完成,Terrain/InstanceDungeon/Amihigh/Dark_Fortress/
+413,4091,0,0,,,黑暗要塞(困难),完成,Terrain/InstanceDungeon/Amihigh/Dark_Fortress/
+414,4092,0,0,,,黑暗要塞(极困难),完成,Terrain/InstanceDungeon/Amihigh/Dark_Fortress/
+415,4093,0,0,,,黑暗要塞(炼狱),完成,Terrain/InstanceDungeon/Amihigh/Dark_Fortress_Hell/
+416,4400,0,0,,,普利德米尔饲养场(普通),完成,Terrain/InstanceDungeon/Demolition/Bleedmeel_Farm/
+417,4401,0,0,,,普利德米尔饲养场(困难),完成,Terrain/InstanceDungeon/Demolition/Bleedmeel_Farm/
+418,4402,0,0,,,普利德米尔饲养场(极困难),完成,Terrain/InstanceDungeon/Demolition/Bleedmeel_Farm/
+419,4403,0,0,,,普利德米尔饲养场(炼狱),完成,Terrain/InstanceDungeon/Demolition/Bleedmeel_Farm_Hell/
+420,4410,0,0,,,恩蒂温圣所(普通),完成,Terrain/InstanceDungeon/Demolition/Entyon_Sanctum/
+421,4411,0,0,,,恩蒂温圣所(困难),完成,Terrain/InstanceDungeon/Demolition/Entyon_Sanctum/
+422,4412,0,0,,,恩蒂温圣所(极困难),完成,Terrain/InstanceDungeon/Demolition/Entyon_Sanctum/
+423,4413,0,0,,,恩蒂温圣所(炼狱),完成,Terrain/InstanceDungeon/Demolition/Entyon_Sanctum_Hell/
+424,4420,0,0,,,冰冷的洞窟(普通),完成,Terrain/InstanceDungeon/Demolition/frozen_cave/
+425,4421,0,0,,,冰冷的洞窟(困难),完成,Terrain/InstanceDungeon/Demolition/frozen_cave/
+426,4422,0,0,,,冰冷的洞窟(极困难),完成,Terrain/InstanceDungeon/Demolition/frozen_cave/
+427,4423,0,0,,,冰冷的洞窟(炼狱),完成,Terrain/InstanceDungeon/Demolition/frozen_cave_Hell/
+428,4430,0,0,,,冰封的狼城(普通),完成,Terrain/InstanceDungeon/Demolition/frozenwolf_castle/
+429,4431,0,0,,,冰封的狼城(困难),完成,Terrain/InstanceDungeon/Demolition/frozenwolf_castle/
+430,4432,0,0,,,冰封的狼城(极困难),完成,Terrain/InstanceDungeon/Demolition/frozenwolf_castle/
+431,4433,0,0,,,冰封的狼城(炼狱),完成,Terrain/InstanceDungeon/Demolition/frozenwolf_castle_Hell/
+432,4440,0,0,,,哈比人的乐园(普通),完成,Terrain/InstanceDungeon/Demolition/Harpy_Paradise/
+433,4441,0,0,,,哈比人的乐园(困难),完成,Terrain/InstanceDungeon/Demolition/Harpy_Paradise/
+434,4442,0,0,,,哈比人的乐园(极困难),完成,Terrain/InstanceDungeon/Demolition/Harpy_Paradise/
+435,4443,0,0,,,哈比人的乐园(炼狱),完成,Terrain/InstanceDungeon/Demolition/Harpy_Paradise_Hell/
+436,4450,0,0,,,暴风古城(普通),完成,Terrain/InstanceDungeon/Demolition/Tempest_Castle/
+437,4451,0,0,,,暴风古城(困难),完成,Terrain/InstanceDungeon/Demolition/Tempest_Castle/
+438,4452,0,0,,,暴风古城(极困难),完成,Terrain/InstanceDungeon/Demolition/Tempest_Castle/
+439,4453,0,0,,,暴风古城(炼狱),完成,Terrain/InstanceDungeon/Demolition/Tempest_Castle_Hell/
+440,4460,0,0,,,战士们的圣地,完成,Terrain/InstanceDungeon/Demolition/Shrine_Warrior/
+441,4461,0,0,,,战士们的圣地,完成,Terrain/InstanceDungeon/Demolition/Shrine_Warrior/
+442,4462,0,0,,,战士们的圣地,完成,Terrain/InstanceDungeon/Demolition/Shrine_Warrior/
+443,4463,0,0,,,战士们的圣地,完成,Terrain/InstanceDungeon/Demolition/Shrine_Warrior_Hell/
+444,4470,0,0,,,红顶火山洞穴,完成,Terrain/InstanceDungeon/Demolition/Redhead_Lavacave/
+445,4471,0,0,,,红顶火山洞穴,完成,Terrain/InstanceDungeon/Demolition/Redhead_Lavacave/
+446,4472,0,0,,,红顶火山洞穴,完成,Terrain/InstanceDungeon/Demolition/Redhead_Lavacave/
+447,4473,0,0,,,红顶火山洞穴,完成,Terrain/InstanceDungeon/Demolition/Redhead_Lavacave_Hell/
+448,4480,0,0,,,灰色半兽人村庄(普通),完成,Terrain/InstanceDungeon/Demolition/Gray_Kentauros/
+449,4481,0,0,,,灰色半兽人村庄(困难),完成,Terrain/InstanceDungeon/Demolition/Gray_Kentauros/
+450,4482,0,0,,,灰色半兽人村庄(极困难),完成,Terrain/InstanceDungeon/Demolition/Gray_Kentauros/
+451,4483,0,0,,,灰色半兽人村庄(炼狱),完成,Terrain/InstanceDungeon/Demolition/Gray_Kentauros_Hell/
+452,4490,0,0,,,光之地下庭院 (普通),完成,Terrain/InstanceDungeon/Demolition/Warmlight_Garden/
+453,4491,0,0,,,光之地下庭院(困难),完成,Terrain/InstanceDungeon/Demolition/Warmlight_Garden/
+454,4492,0,0,,,光之地下庭院(极困难),完成,Terrain/InstanceDungeon/Demolition/Warmlight_Garden/
+455,4493,0,0,,,光之地下庭院(炼狱),完成,Terrain/InstanceDungeon/Demolition/Warmlight_Garden_Hell/
+456,4500,0,0,,,倒塌的梦之缝隙(普通),完成,Terrain/InstanceDungeon/Battle_Field/GapofDreams/
+457,4501,0,0,,,倒塌的梦之缝隙(困难),完成,Terrain/InstanceDungeon/Battle_Field/GapofDreams/
+458,4502,0,0,,,倒塌的梦之缝隙(极困难),完成,Terrain/InstanceDungeon/Battle_Field/GapofDreams/
+459,4503,0,0,,,倒塌的梦之缝隙(炼狱),完成,Terrain/InstanceDungeon/Battle_Field/GapofDreams_Hell/
+460,4510,0,0,,,蓝光洞窟(普通),完成,Terrain/InstanceDungeon/Battle_Field/PurpleCave/
+461,4511,0,0,,,蓝光洞窟(困难),完成,Terrain/InstanceDungeon/Battle_Field/PurpleCave/
+462,4512,0,0,,,蓝光洞窟(极困难),完成,Terrain/InstanceDungeon/Battle_Field/PurpleCave/
+463,4513,0,0,,,蓝光洞窟(炼狱),完成,Terrain/InstanceDungeon/Battle_Field/PurpleCave_Hell/
+464,4700,0,0,,,恶魔祭坛(普通),完成,Terrain/InstanceDungeon/Raid/Nightmareofthealtar/000_000/
+465,4700,1,0,,,恶魔祭坛(普通),完成,Terrain/InstanceDungeon/Raid/Nightmareofthealtar/100_000/
+466,4701,0,0,,,恶魔祭坛(困难),完成,Terrain/InstanceDungeon/Raid/Nightmareofthealtar/
+467,4702,0,0,,,恶魔祭坛(极困难),完成,Terrain/InstanceDungeon/Raid/Nightmareofthealtar/
+468,4703,0,0,,,恶魔祭坛(炼狱),完成,Terrain/InstanceDungeon/Raid/Nightmareofthealtar/
+469,4800,0,0,,,Lv.5[组队]扭曲的时光洞窟(普通),完成,Terrain/InstanceDungeon/Party/Time_Caverns/
+470,4801,0,0,,,Lv.5[组队]扭曲的时光洞窟(困难),完成,Terrain/InstanceDungeon/Party/Time_Caverns/
+471,4802,0,0,,,Lv.5[组队]扭曲的时光洞窟(极困难),完成,Terrain/InstanceDungeon/Party/Time_Caverns/
+472,4803,0,0,,,Lv.5[组队]扭曲的时光洞窟(炼狱),完成,Terrain/InstanceDungeon/Party/Time_Caverns/
+473,4810,0,0,,,Lv.10[组队]扭曲的时间花园 (普通),完成,Terrain/InstanceDungeon/Party/Time_Forests/
+474,4811,0,0,,,Lv.10[组队]扭曲的时间花园 (困难),完成,Terrain/InstanceDungeon/Party/Time_Forests/
+475,4812,0,0,,,Lv.10[组队]扭曲的时间花园 (极困难),完成,Terrain/InstanceDungeon/Party/Time_Forests/
+476,4813,0,0,,,Lv.10[组队]扭曲的时间花园 (炼狱),完成,Terrain/InstanceDungeon/Party/Time_Forests/
+477,4820,0,0,,,Lv.15[组队]扭曲的时光洞窟(普通),完成,Terrain/InstanceDungeon/Party/Time_Caverns/
+478,4821,0,0,,,Lv.15[组队]扭曲的时光洞窟(困难),完成,Terrain/InstanceDungeon/Party/Time_Caverns/
+479,4822,0,0,,,Lv.15[组队]扭曲的时光洞窟(极困难),完成,Terrain/InstanceDungeon/Party/Time_Caverns/
+480,4823,0,0,,,Lv.15[组队]扭曲的时光洞窟(炼狱),完成,Terrain/InstanceDungeon/Party/Time_Caverns/
+481,4830,0,0,,,Lv.20[组队]扭曲的时间花园 (普通),完成,Terrain/InstanceDungeon/Party/Time_Forests/
+482,4831,0,0,,,Lv.20[组队]扭曲的时间花园 (困难),完成,Terrain/InstanceDungeon/Party/Time_Forests/
+483,4832,0,0,,,Lv.20[组队]扭曲的时间花园 (极困难),完成,Terrain/InstanceDungeon/Party/Time_Forests/
+484,4833,0,0,,,Lv.20[组队]扭曲的时间花园 (炼狱),完成,Terrain/InstanceDungeon/Party/Time_Forests/
+485,4840,0,0,,,Lv.25[组队]扭曲的时光洞窟(普通),完成,Terrain/InstanceDungeon/Party/Time_Caverns/
+486,4841,0,0,,,Lv.25[组队]扭曲的时光洞窟(困难),完成,Terrain/InstanceDungeon/Party/Time_Caverns/
+487,4842,0,0,,,Lv.25[组队]扭曲的时光洞窟(极困难),完成,Terrain/InstanceDungeon/Party/Time_Caverns/
+488,4843,0,0,,,Lv.25[组队]扭曲的时光洞窟(炼狱),完成,Terrain/InstanceDungeon/Party/Time_Caverns/
+489,4850,0,0,,,Lv.30[组队]扭曲的时间花园 (普通),完成,Terrain/InstanceDungeon/Party/Time_Forests/
+490,4851,0,0,,,Lv.30[组队]扭曲的时间花园 (困难),完成,Terrain/InstanceDungeon/Party/Time_Forests/
+491,4852,0,0,,,Lv.30[组队]扭曲的时间花园 (极困难),完成,Terrain/InstanceDungeon/Party/Time_Forests/
+492,4853,0,0,,,Lv.30[组队]扭曲的时间花园 (炼狱),完成,Terrain/InstanceDungeon/Party/Time_Forests/
+493,4900,0,0,,,克罗西亚竞技场,完成,Terrain/BattleField/ColosseumOfGrasia/
+494,4905,0,0,,,大规模战场,完成,Terrain/InstanceDungeon/Test_Battle/000_000/
+495,4905,0,1,,,大规模战场,完成,Terrain/InstanceDungeon/Test_Battle/000_100/
+496,4905,1,0,,,大规模战场,完成,Terrain/InstanceDungeon/Test_Battle/100_000/
+497,4905,1,1,,,大规模战场,完成,Terrain/InstanceDungeon/Test_Battle/100_100/
+498,4905,1,1,,,大规模战场,完成,Terrain/InstanceDungeon/Test_Battle/100_100/
+499,1141,0,0,,,CTF,完成,Terrain/BattleField/Occupation/

@@ -1,0 +1,5 @@
+TID,Comment,Svr,ItemTID,ItemStack
+分离器,企划者用,服务器号,登陆号码,最大条款数量
+,,,,
+U16,CBwString,U8,U32,U16
+1,饥饿的乞丐哥布林,,2150200,5

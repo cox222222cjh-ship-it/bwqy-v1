@@ -1,0 +1,12 @@
+TID,Priority,Weight,EaseInTime,Deactivate,Desc
+分离器,优先区域,重量,加入Ani运动时的状态,加入Ani静止时的状态,说明
+2,,,,,
+U8,S32,F32,F32,F32,CBwString
+1,2,1,0.15,0.15,Skill
+2,2,1,0.15,0.3,Combo
+3,2,1,0.15,0.15,Casting
+4,2,1,0.1,0.1,Beaten
+5,1,1,0.05,0.1,Move
+6,1,1,0.02,0.02,Jump
+7,1,1,0.02,0.02,Falling
+8,1,1,0.01,0.2,Land

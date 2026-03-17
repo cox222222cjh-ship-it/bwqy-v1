@@ -1,0 +1,7 @@
+TID,EngName,LocalName,FinishCount
+指数:主区分,英文名,韩文名,完成达到的次数
+,,,
+U16,CBwString,CBwString,U16
+1,,僵尸猎人,100
+2,,龙之追猎者,100
+3,,基灵机,500

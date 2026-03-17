@@ -1,0 +1,17 @@
+TID,Name,LeftMesh,RightMesh
+分离,名称,日期信息,日期信息
+3,,,
+U16,CBwString,CBwString,CBwString
+1000,矛,p_w_shle_04_lft_lod.nif,p_w_lanc_04_all_lod.nif
+2000,盾,,p_w_tstf_04_all_lod.nif
+3000,斧子,p_w_taxe_04_all_lod.nif,
+4000,弓,p_w_tbow_04_all_lod.nif,
+5000,能量,p_w_tcha_04_all_lod.nif,p_w_tcha_04_all_lod.nif
+6000,大炮,,
+7000,弹弓,p_w_tdag_04_lod.nif,p_w_tdag_04_lod.nif
+8000,天体,p_w_oorb_04_all_lod.nif,p_w_oorb_04_all_lod.nif
+9000,马坦枪,p_w_tgun_04_all_lod.nif,p_w_tgun_04_all_lod.nif
+10000,单手剑,p_w_shld_04_lft_lod.nif,p_w_oswd_04_rgt_lod.nif
+11000,双手剑,,p_w_tbla_04_all_lod.nif
+12000,石弓,,p_w_tarb_04_all_lod.nif
+13000,木箭,,p_w_twan_04_all_lod.nif
