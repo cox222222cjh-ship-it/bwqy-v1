@@ -81,6 +81,28 @@ class WebUiTests(unittest.TestCase):
         self.assertTrue(state.no_result)
         self.assertIsNone(state.result)
 
+
+    def test_candidate_render_keeps_traceability_and_pending_visible(self) -> None:
+        from item_query_v1.web_ui import build_html
+
+        state = query_to_page_state(self._build_index(), "DUP")
+        html = build_html(state)
+        self.assertIn("trace", html)
+        self.assertIn("ItemTable.TID", html)
+        self.assertIn("ItemTable.SetTID|AP|DP|BP|CP", html)
+        self.assertIn("derived", html)
+        self.assertIn("pending_confirmation", html)
+
+    def test_detail_render_shows_status_source_and_pending_warning(self) -> None:
+        from item_query_v1.web_ui import build_html
+
+        state = query_to_page_state(self._build_index(), "100")
+        html = build_html(state)
+        self.assertIn("status", html)
+        self.assertIn("source", html)
+        self.assertIn("pending_confirmation", html)
+        self.assertIn("包含 pending_confirmation 字段，请谨慎使用。", html)
+
     def test_startup_error_state(self) -> None:
         app_state = init_app_state(index_builder=lambda: (_ for _ in ()).throw(RuntimeError("boom")))
         self.assertIsNotNone(app_state.startup_error)

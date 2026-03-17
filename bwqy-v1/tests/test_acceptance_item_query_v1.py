@@ -144,6 +144,42 @@ class ItemQueryV1AcceptanceTests(unittest.TestCase):
         self.assertIn("包含 pending_confirmation 字段，请谨慎使用。", html)
         self.assertIn("待确认", html)
 
+
+    def test_acceptance_single_item_displayed_fields_have_source_and_status(self) -> None:
+        state = query_to_page_state(self._build_index(), "500")
+        assert isinstance(state.result, ItemResultPageModel)
+
+        sections = [
+            state.result.basic_information,
+            state.result.classification,
+            state.result.source_information,
+            state.result.trust_status,
+            state.result.equipment_chain.section,
+        ]
+        allowed_status = {"direct", "derived", "pending_confirmation"}
+        for section in sections:
+            for field in section.fields:
+                self.assertTrue(field.source_table)
+                self.assertTrue(field.source_field)
+                self.assertIn(field.status, allowed_status)
+
+    def test_acceptance_multi_candidate_keeps_ambiguous_chain_out_of_ui(self) -> None:
+        state = query_to_page_state(self._build_index(), "DUP_NAME")
+        assert isinstance(state.result, CandidateResultModel)
+
+        html = build_html(state)
+        self.assertNotIn("装备链路（state=available）", html)
+        self.assertNotIn("set_chain_rows", html)
+
+    def test_acceptance_no_result_does_not_fabricate_values(self) -> None:
+        state = query_to_page_state(self._build_index(), "NOT_FOUND")
+        html = build_html(state)
+
+        self.assertIn("无结果", html)
+        self.assertNotIn("基础信息", html)
+        self.assertNotIn("classification", html)
+        self.assertNotIn("ItemTable.", html)
+
     def test_acceptance_no_result_behavior(self) -> None:
         state = query_to_page_state(self._build_index(), "NOT_FOUND")
         self.assertTrue(state.no_result)

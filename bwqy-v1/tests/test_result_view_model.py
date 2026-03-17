@@ -135,6 +135,64 @@ class ResultViewModelTests(unittest.TestCase):
         self.assertEqual(category.status, "pending_confirmation")
         self.assertEqual(category.value, "待确认")
 
+
+    def test_all_displayed_fields_keep_traceability_and_valid_status(self) -> None:
+        item = _item_record(
+            {
+                "TID": "100",
+                "LocalName": "A",
+                "EngName": "EA",
+                "Level": "1",
+                "Grade": "2",
+                "LocalDesc": "desc",
+                "Type": "10",
+                "Kind": "20",
+                "Property": "30",
+                "SetTID": "0",
+            }
+        )
+        raw = ItemQueryResult("100", "item_id", [item], [], {"ItemSetTable": [], "ItemSetAbilityTable": []})
+
+        view = build_result_view_model(raw)
+        assert isinstance(view, ItemResultPageModel)
+        allowed_status = {"direct", "derived", "pending_confirmation"}
+        sections = [
+            view.basic_information,
+            view.classification,
+            view.source_information,
+            view.trust_status,
+            view.equipment_chain.section,
+        ]
+        for section in sections:
+            for field in section.fields:
+                self.assertTrue(field.source_table)
+                self.assertTrue(field.source_field)
+                self.assertIn(field.status, allowed_status)
+
+    def test_category_name_zh_remains_pending_confirmation_not_confirmed_label(self) -> None:
+        item = _item_record({"TID": "100", "Type": "10", "Kind": "20", "Property": "30"})
+        raw = ItemQueryResult("100", "item_id", [item], [], {"ItemSetTable": [], "ItemSetAbilityTable": []})
+
+        view = build_result_view_model(raw)
+        assert isinstance(view, ItemResultPageModel)
+        category = next(x for x in view.classification.fields if x.key == "category_name_zh")
+        self.assertEqual(category.value, "待确认")
+        self.assertEqual(category.status, "pending_confirmation")
+
+    def test_candidate_result_never_marks_equipment_chain_available(self) -> None:
+        c1 = _item_record({"TID": "1", "LocalName": "dup", "Type": "1", "Kind": "1", "Property": "1", "AP": "10"})
+        c2 = _item_record({"TID": "2", "LocalName": "dup", "Type": "1", "Kind": "1", "Property": "1", "SetTID": "3"})
+        raw = ItemQueryResult(
+            query="dup",
+            query_type="item_name",
+            matched_items=[],
+            candidates=[c1, c2],
+            set_chain={"ItemSetTable": [], "ItemSetAbilityTable": []},
+        )
+
+        view = build_result_view_model(raw)
+        assert isinstance(view, CandidateResultModel)
+        self.assertTrue(all(candidate.equipment_chain.state != "available" for candidate in view.candidates))
     def test_equipment_chain_not_applicable_for_non_equipment(self) -> None:
         item = _item_record({"TID": "100", "Type": "10", "Kind": "20", "Property": "30", "SetTID": "0", "AP": "0"})
         raw = ItemQueryResult("100", "item_id", [item], [], {"ItemSetTable": [], "ItemSetAbilityTable": []})
