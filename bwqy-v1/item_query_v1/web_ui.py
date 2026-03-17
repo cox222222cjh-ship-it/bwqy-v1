@@ -106,25 +106,31 @@ def _render_candidates(model: CandidateResultModel) -> str:
         '<section class="panel">'
         '<div class="state">候选结果</div>'
         '<div>命中多个候选，请按 TID/名称再发起精确查询。</div>'
-        '<table><thead><tr><th>TID</th><th>LocalName</th><th>EngName</th><th>is_equipment</th><th>状态</th></tr></thead>'
+        '<table><thead><tr><th>TID</th><th>LocalName</th><th>EngName</th><th>is_equipment</th><th>trace</th><th>状态</th></tr></thead>'
         f"<tbody>{rows}</tbody></table></section>"
     )
 
 
 def _render_candidate_row(candidate: ItemResultPageModel) -> str:
-    tid = _field_value(candidate.basic_information, "TID")
-    local_name = _field_value(candidate.basic_information, "LocalName")
-    eng_name = _field_value(candidate.basic_information, "EngName")
+    tid = _field(candidate.basic_information, "TID")
+    local_name = _field(candidate.basic_information, "LocalName")
+    eng_name = _field(candidate.basic_information, "EngName")
     equipment = _field(candidate.classification, "is_equipment")
     pending = _has_pending_confirmation(candidate)
     pending_label = '<span class="badge warn">pending_confirmation</span>' if pending else "-"
     equipment_value = escape(equipment.value if equipment else "")
+    trace_items = [field for field in [tid, local_name, eng_name, equipment] if field is not None]
+    trace_value = "<br/>".join(
+        f"{escape(field.label)}: {escape(field.source_table)}.{escape(field.source_field)} [{escape(field.status)}]"
+        for field in trace_items
+    )
     return (
         "<tr>"
-        f"<td>{escape(tid)}</td>"
-        f"<td>{escape(local_name)}</td>"
-        f"<td>{escape(eng_name)}</td>"
+        f"<td>{escape(tid.value if tid else '')}</td>"
+        f"<td>{escape(local_name.value if local_name else '')}</td>"
+        f"<td>{escape(eng_name.value if eng_name else '')}</td>"
         f"<td>{equipment_value}</td>"
+        f"<td>{trace_value}</td>"
         f"<td>{pending_label}</td>"
         "</tr>"
     )
@@ -177,11 +183,6 @@ def _render_field_row(field: FieldDisplayItem) -> str:
 
 def _field(section: SectionModel, key: str) -> FieldDisplayItem | None:
     return next((field for field in section.fields if field.key == key), None)
-
-
-def _field_value(section: SectionModel, key: str) -> str:
-    field = _field(section, key)
-    return field.value if field else ""
 
 
 def _has_pending_confirmation(model: ItemResultPageModel) -> bool:
