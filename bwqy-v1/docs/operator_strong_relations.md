@@ -264,7 +264,7 @@
 
 ---
 
-## 4. World / Map / Area / Portal relations
+## 4. World / Map / Area / Portal navigation-context relations
 
 ### 4.1 Map -> World
 
@@ -348,6 +348,6 @@
 - Item -> drop / shop / box / break / enchant / alchemy / mix / socket / set
 - Quest -> mission / reward / quest drop / give item / prev-next
 - NPC -> drop / shop
-- World / map / area / portal / world place 作为导航上下文
+- World / map / area / portal / world place 作为 searchable navigation context，而不是一等主入口
 
 任何只因同名 `TID` 可连接的关系，都不应自动纳入默认查询工具。

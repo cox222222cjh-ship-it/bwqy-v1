@@ -21,7 +21,7 @@
 
 ## 1. Top-level searchable tables
 
-这些表可作为运营主动输入查询时的主入口。
+这些表都可以进入默认运营查询空间，但层级并不相同：Primary operator entry points 仍是 Item / NPC / Quest，而 World / Map / Area / Portal 仅作为 searchable navigation context。
 
 ### A. Item domain
 
@@ -43,7 +43,7 @@
 
 ### D. Navigation / world context domain
 
-以下表可进入主搜索空间，但建议在 UI 上弱于 Item/NPC/Quest：
+以下表可进入默认搜索空间，但只能作为 searchable navigation context，不应被表述为与 Item / NPC / Quest 同级的 first-class primary entry points：
 
 - `WorldTable.csv`
   - 角色：世界主实体。
@@ -137,20 +137,19 @@
 
 ## 本文结论
 
-默认运营查询空间的**主入口表**应收敛为：
+默认运营查询空间应分层表达为：
+
+**Primary operator entry points**
 
 - `ItemTable.csv`
 - `NpcTable.csv`
 - `QuestTable.csv`
+
+**Searchable navigation context**
+
 - `WorldTable.csv`
 - `MapTable.csv`
 - `AreaTable.csv`
 - `PortalTable.csv`
 
-其中最核心的前三项仍是：
-
-- `ItemTable.csv`
-- `NpcTable.csv`
-- `QuestTable.csv`
-
-其余白名单表主要承担详情补充、上下文导航、链路解释作用。
+其中，World / Map / Area / Portal 应增强发现与导航上下文，但不应主导默认运营搜索体验；其余白名单表主要承担详情补充、上下文导航、链路解释作用。

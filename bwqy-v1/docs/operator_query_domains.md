@@ -68,7 +68,7 @@ NPC 是运营理解“谁掉落、谁售卖、谁触发任务”的关键锚点�
 
 ### 4. World / Map / Area / Portal Guidance（导航上下文域）
 
-这不是“全世界编辑器”，而是运营排障时需要的**导航上下文**。
+这不是“全世界编辑器”，而是运营排障时需要的**可搜索导航上下文**，不是与 Item / NPC / Quest 并列的 first-class primary entry points。
 
 典型问题：
 
@@ -110,7 +110,7 @@ NPC 是运营理解“谁掉落、谁售卖、谁触发任务”的关键锚点�
 
 1. Shop / sale
 2. Drop
-3. World / map / area / portal
+3. World / map / area / portal（作为 searchable navigation context）
 4. Item transformation chain（box / break / enchant / alchemy / mix / socket / set）
 
 ### 明确后置
@@ -138,4 +138,4 @@ NPC 是运营理解“谁掉落、谁售卖、谁触发任务”的关键锚点�
 4. World / Map / Area / Portal guidance
 5. Event / Instance as later expansion
 
-其中真正适合作为**主搜索入口**的，是 Item、NPC、Quest；World/Map 类更适合作为导航上下文增强，而 Event/Instance 暂缓进入默认主搜索空间。
+Primary operator entry points 仍然是 Item、NPC、Quest；World / Map / Area / Portal 是 searchable navigation context，不是一等主入口。它们应增强发现与导航上下文，但不应主导默认运营搜索体验；Event/Instance 仍暂缓进入默认主搜索空间。
