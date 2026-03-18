@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from dataclasses import field
 from typing import Iterable
 
 from .csv_loader import load_allowed_tables, resolve_tables_dir
@@ -15,6 +16,10 @@ class ItemQueryIndex:
     by_eng_name: dict[str, list[dict[str, str]]]
     item_set_by_tid: dict[str, dict[str, str]]
     set_ability_by_tid: dict[str, dict[str, str]]
+    npc_by_tid: dict[str, dict[str, str]] = field(default_factory=dict)
+    npc_by_local_name: dict[str, list[dict[str, str]]] = field(default_factory=dict)
+    sale_items_by_sale_tid: dict[str, list[dict[str, str]]] = field(default_factory=dict)
+    drop_rows_by_tid: dict[str, dict[str, str]] = field(default_factory=dict)
 
 
 def build_item_query_index() -> ItemQueryIndex:

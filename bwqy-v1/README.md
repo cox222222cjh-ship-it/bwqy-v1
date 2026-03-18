@@ -49,3 +49,38 @@ python -m unittest discover -s tests
 
 - 详见 `docs/v1-closure.md`，用于记录本次 v1 最终核验、已知限制与后续变更边界。
 
+## NPC 掉落 / 商店最小运营查询
+
+当前仓库另外提供了一个**代码级最小查询能力**，用于运营核对 NPC 与 item 的 drop/shop 关系。
+
+支持的输入：
+
+- NPC 名称 / NPC TID
+- Item 名称 / Item TID
+
+支持的输出：
+
+- 这个 NPC 卖什么
+- 这个 NPC 掉什么
+- 哪些 NPC 卖这个物品
+- 哪些 NPC 掉这个物品
+
+仅包含的表与关系：
+
+- `NpcTable.SaleTID -> SaleTable.SaleTID -> SaleTable.ItemTID -> ItemTable.TID`
+- `NpcTable.ItemDropTID -> ItemDropTable.TID -> ItemDropTable.DropItemXX -> ItemTable.TID`
+
+明确暂不包含：
+
+- Quest
+- `MapDropTID` / `ItemDropWorldTable`
+- broad full-table search
+
+示例：
+
+```python
+from item_query_v1.npc_shop_drop_query import build_npc_shop_drop_index, query_npc_or_item
+
+index = build_npc_shop_drop_index()
+result = query_npc_or_item(index, "NPC_NAME_OR_ITEM_NAME")
+```

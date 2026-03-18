@@ -34,3 +34,28 @@ class ItemQueryResult:
     matched_items: list[RawRecord]
     candidates: list[RawRecord]
     set_chain: dict[str, list[RawRecord]]
+
+
+@dataclass(frozen=True)
+class NpcItemRelationRecord:
+    relation_type: Literal["drop", "shop"]
+    npc_record: RawRecord
+    item_record: RawRecord
+    source_path: str
+    trace_records: list[RawRecord]
+    status: ValueStatus
+    note: str | None = None
+
+
+@dataclass(frozen=True)
+class NpcShopDropSection:
+    relation_type: Literal["drop", "shop"]
+    owner_record: RawRecord
+    related_records: list[NpcItemRelationRecord]
+
+
+@dataclass(frozen=True)
+class NpcShopDropQueryResult:
+    query: str
+    query_kind: Literal["npc", "item", "unknown"]
+    sections: list[NpcShopDropSection]
