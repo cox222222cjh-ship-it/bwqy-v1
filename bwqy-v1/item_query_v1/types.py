@@ -57,5 +57,6 @@ class NpcShopDropSection:
 @dataclass(frozen=True)
 class NpcShopDropQueryResult:
     query: str
-    query_kind: Literal["npc", "item", "unknown"]
+    query_kind: Literal["npc", "item", "unknown", "ambiguous"]
     sections: list[NpcShopDropSection]
+    note: str | None = None

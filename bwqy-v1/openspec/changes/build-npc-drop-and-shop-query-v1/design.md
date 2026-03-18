@@ -1,4 +1,4 @@
-# Design: build-operator-npc-drop-shop-query
+# Design: build-npc-drop-and-shop-query-v1
 
 ## Overview
 
@@ -60,6 +60,7 @@
 
 - 若输入命中 NPC，则优先返回 NPC 视角结果。
 - 若未命中 NPC 但命中 Item，则返回 Item 视角结果。
+- 若纯数字输入同时命中 NPC TID 与 Item TID，则返回显式歧义结果，要求用户细化查询。
 - 空值、`0`、坏引用统一视为空关系，不构造“待确认关系”冒充事实。
 
 ## Risks and mitigations

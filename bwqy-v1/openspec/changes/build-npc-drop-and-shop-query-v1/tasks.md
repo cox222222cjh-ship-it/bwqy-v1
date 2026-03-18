@@ -1,4 +1,4 @@
-# Tasks: build-operator-npc-drop-shop-query
+# Tasks: build-npc-drop-and-shop-query-v1
 
 ## Task 1: Freeze scope
 

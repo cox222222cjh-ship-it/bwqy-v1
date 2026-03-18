@@ -1,4 +1,4 @@
-# Change Proposal: build-operator-npc-drop-shop-query
+# Change Proposal: build-npc-drop-and-shop-query-v1
 
 ## Summary
 

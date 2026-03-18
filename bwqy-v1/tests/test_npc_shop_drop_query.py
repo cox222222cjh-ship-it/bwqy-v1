@@ -94,6 +94,30 @@ class NpcShopDropQueryTests(unittest.TestCase):
         relation = drop_section.related_records[0]
         self.assertEqual(relation.npc_record.values["TID"].raw_value, "201")
 
+    def test_numeric_query_matching_only_npc_returns_npc_result(self) -> None:
+        result = query_npc_or_item(self._build_index(), "200")
+
+        self.assertEqual(result.query_kind, "npc")
+        self.assertIsNone(result.note)
+        shop_section = next(section for section in result.sections if section.relation_type == "shop")
+        self.assertEqual(len(shop_section.related_records), 1)
+
+    def test_numeric_query_matching_only_item_returns_item_result(self) -> None:
+        result = query_npc_or_item(self._build_index(), "100")
+
+        self.assertEqual(result.query_kind, "item")
+        self.assertIsNone(result.note)
+        shop_section = next(section for section in result.sections if section.relation_type == "shop")
+        self.assertEqual(len(shop_section.related_records), 1)
+
+    def test_numeric_query_matching_both_npc_and_item_returns_ambiguity(self) -> None:
+        result = query_npc_or_item(self._build_index(), "500")
+
+        self.assertEqual(result.query_kind, "ambiguous")
+        self.assertEqual(result.sections, [])
+        self.assertIsNotNone(result.note)
+        self.assertIn("同时命中 NPC TID 与 Item TID", result.note or "")
+
     def test_missing_zero_or_invalid_relation_ids_are_handled_safely(self) -> None:
         invalid_result = query_npc_or_item(self._build_index(), "NPC_INVALID")
         invalid_drop = next(
@@ -109,11 +133,8 @@ class NpcShopDropQueryTests(unittest.TestCase):
     def test_no_false_positive_relations_from_unrelated_tid_collisions(self) -> None:
         result = query_npc_or_item(self._build_index(), "500")
 
-        self.assertEqual(result.query_kind, "npc")
-        shop_section = next(section for section in result.sections if section.relation_type == "shop")
-        drop_section = next(section for section in result.sections if section.relation_type == "drop")
-        self.assertEqual(shop_section.related_records, [])
-        self.assertEqual(drop_section.related_records, [])
+        self.assertEqual(result.query_kind, "ambiguous")
+        self.assertEqual(result.sections, [])
 
 
 if __name__ == "__main__":

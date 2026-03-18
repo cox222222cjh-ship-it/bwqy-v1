@@ -58,6 +58,11 @@ python -m unittest discover -s tests
 - NPC 名称 / NPC TID
 - Item 名称 / Item TID
 
+数字输入的安全规则：
+
+- 如果一个纯数字同时命中 `NpcTable.TID` 和 `ItemTable.TID`，系统会返回显式歧义结果，不会默认猜成 NPC 或 Item。
+- 此时应改用名称，或补充更明确的对象上下文再查询。
+
 支持的输出：
 
 - 这个 NPC 卖什么

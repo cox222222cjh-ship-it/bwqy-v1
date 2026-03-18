@@ -85,6 +85,14 @@ def query_npc_or_item(index: ItemQueryIndex, query: str) -> NpcShopDropQueryResu
         by_name=index.by_local_name,
     )
 
+    if q.isdigit() and npc_rows and item_rows:
+        return NpcShopDropQueryResult(
+            query=q,
+            query_kind="ambiguous",
+            sections=[],
+            note="该纯数字输入同时命中 NPC TID 与 Item TID；请改用名称或更明确的对象上下文重新查询。",
+        )
+
     if npc_rows:
         sections = []
         for npc_row in npc_rows:

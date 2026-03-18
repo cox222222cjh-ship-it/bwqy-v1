@@ -1,4 +1,4 @@
-# Spec: build-operator-npc-drop-shop-query
+# Spec: build-npc-drop-and-shop-query-v1
 
 ## ADDED Requirements
 
@@ -19,6 +19,14 @@
 - When 系统命中一个 Item
 - Then 系统返回明确售卖该物品的 NPC
 - And 系统不得因为无关 `TID` 数值碰撞而创建商店关系
+
+#### Scenario: Numeric query matches both NPC and Item
+- Given 用户输入一个纯数字
+- And 该值同时命中 `NpcTable.TID` 与 `ItemTable.TID`
+- When 系统执行查询
+- Then 系统返回显式歧义结果
+- And 系统要求用户细化查询
+- And 系统不得静默偏向任一对象域
 
 ### Requirement: NPC drop relation query
 
