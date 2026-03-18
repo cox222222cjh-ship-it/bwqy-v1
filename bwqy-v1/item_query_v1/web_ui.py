@@ -31,7 +31,9 @@ class AppState:
     startup_error: str | None
 
 
-def init_app_state(index_builder: Callable[[], ItemQueryIndex] = build_item_query_index) -> AppState:
+def init_app_state(
+    index_builder: Callable[[], ItemQueryIndex] = build_item_query_index,
+) -> AppState:
     try:
         return AppState(index=index_builder(), startup_error=None)
     except Exception as exc:  # noqa: BLE001
@@ -105,8 +107,8 @@ def _render_candidates(model: CandidateResultModel) -> str:
     return (
         '<section class="panel">'
         '<div class="state">候选结果</div>'
-        '<div>命中多个候选，请按 TID/名称再发起精确查询。</div>'
-        '<table><thead><tr><th>TID</th><th>LocalName</th><th>EngName</th><th>is_equipment</th><th>trace</th><th>状态</th></tr></thead>'
+        "<div>命中多个候选，请按 TID/名称再发起精确查询。</div>"
+        "<table><thead><tr><th>物品ID</th><th>物品名称</th><th>英文键</th><th>是否装备（推断）</th><th>来源追踪</th><th>状态</th></tr></thead>"
         f"<tbody>{rows}</tbody></table></section>"
     )
 
@@ -117,11 +119,17 @@ def _render_candidate_row(candidate: ItemResultPageModel) -> str:
     eng_name = _field(candidate.basic_information, "EngName")
     equipment = _field(candidate.classification, "is_equipment")
     pending = _has_pending_confirmation(candidate)
-    pending_label = '<span class="badge warn">pending_confirmation</span>' if pending else "-"
+    pending_label = (
+        '<span class="badge warn">pending_confirmation（待确认）</span>'
+        if pending
+        else "-"
+    )
     equipment_value = escape(equipment.value if equipment else "")
-    trace_items = [field for field in [tid, local_name, eng_name, equipment] if field is not None]
+    trace_items = [
+        field for field in [tid, local_name, eng_name, equipment] if field is not None
+    ]
     trace_value = "<br/>".join(
-        f"{escape(field.label)}: {escape(field.source_table)}.{escape(field.source_field)} [{escape(field.status)}]"
+        f"{escape(field.label)}: {escape(field.source_table)}.{escape(field.source_field)} [{_format_status(field.status)}]"
         for field in trace_items
     )
     return (
@@ -137,7 +145,11 @@ def _render_candidate_row(candidate: ItemResultPageModel) -> str:
 
 
 def _render_item_detail(model: ItemResultPageModel) -> str:
-    pending_note = '<div class="warn">包含 pending_confirmation 字段，请谨慎使用。</div>' if _has_pending_confirmation(model) else ""
+    pending_note = (
+        '<div class="warn">包含 pending_confirmation 字段，请谨慎使用。</div>'
+        if _has_pending_confirmation(model)
+        else ""
+    )
     return "".join(
         [
             pending_note,
@@ -155,7 +167,7 @@ def _render_section(section: SectionModel, title: str) -> str:
     return (
         '<section class="panel">'
         f"<h2>{escape(title)}</h2>"
-        "<table><thead><tr><th>label</th><th>value</th><th>status</th><th>source</th><th>note</th></tr></thead>"
+        "<table><thead><tr><th>字段</th><th>值</th><th>可信状态</th><th>来源</th><th>备注</th></tr></thead>"
         f"<tbody>{rows}</tbody></table></section>"
     )
 
@@ -166,8 +178,9 @@ def _render_equipment_chain(model: ItemResultPageModel) -> str:
 
 
 def _render_field_row(field: FieldDisplayItem) -> str:
-    status = escape(field.status)
-    status_cell = f'{status} <span class="badge">待确认</span>' if field.status == "pending_confirmation" else status
+    status_cell = _format_status(field.status)
+    if field.status == "pending_confirmation":
+        status_cell = f'{status_cell} <span class="badge">待确认</span>'
     note = escape(field.note or "")
     source = f"{escape(field.source_table)}.{escape(field.source_field)}"
     return (
@@ -193,7 +206,11 @@ def _has_pending_confirmation(model: ItemResultPageModel) -> bool:
         model.trust_status,
         model.equipment_chain.section,
     ]
-    return any(field.status == "pending_confirmation" for section in sections for field in section.fields)
+    return any(
+        field.status == "pending_confirmation"
+        for section in sections
+        for field in section.fields
+    )
 
 
 def make_wsgi_app(app_state: AppState):
@@ -216,7 +233,13 @@ def make_wsgi_app(app_state: AppState):
                 page_state = QueryPageState(error=f"查询失败: {exc}")
 
         html = build_html(page_state).encode("utf-8")
-        start_response("200 OK", [("Content-Type", "text/html; charset=utf-8"), ("Content-Length", str(len(html)))])
+        start_response(
+            "200 OK",
+            [
+                ("Content-Type", "text/html; charset=utf-8"),
+                ("Content-Length", str(len(html))),
+            ],
+        )
         return [html]
 
     return app
@@ -227,6 +250,20 @@ def run_server(host: str = "127.0.0.1", port: int = 8000) -> None:
     with make_server(host, port, make_wsgi_app(app_state)) as server:
         print(f"item-query-v1 web UI running at http://{host}:{port}")
         server.serve_forever()
+
+
+_STATUS_LABELS = {
+    "direct": "直接读取",
+    "derived": "推断",
+    "pending_confirmation": "待确认",
+}
+
+
+def _format_status(status: str) -> str:
+    localized = _STATUS_LABELS.get(status)
+    if localized is None:
+        return escape(status)
+    return f"{escape(status)}（{escape(localized)}）"
 
 
 if __name__ == "__main__":
