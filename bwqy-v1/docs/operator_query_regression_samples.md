@@ -72,6 +72,7 @@
 | numeric ambiguity | `80` | 真实 NPC / Item 数字碰撞。 | 保留 numeric ambiguity note。 | `domain=None, status=ambiguous`。 |
 | not_found | `MISSING_OPERATOR_SAMPLE` | 稳定的仓库外查询字符串。 | 所有白名单主域未命中。 | `domain=None, status=not_found`。 |
 | explicit domain_hint behavior | `哥布林的宝物` + `domain_hint=item|quest` | 同一歧义查询在显式 hint 下应稳定定向。 | `domain_hint` 优先于自动路由。 | `item` hint 命中 Item 20025；`quest` hint 命中 Quest 7。 |
+| invalid domain_hint | `哥布林的宝物` + `domain_hint=world` | 统一路由曾显式修复的错误输入场景，需要纳入长期回归。 | 非法 `domain_hint` 必须显式报错，不能静默改路由。 | 返回 `domain=None, status=ambiguous`，且 `primary_payload=None`。 |
 
 ## 开发 / 测试工作流
 
@@ -109,4 +110,5 @@ python -m unittest discover -s bwqy-v1/tests
 - 受影响域：Item / NPC / Quest / Unified 中哪些域
 - 本次覆盖了哪些 regression sample keys
 - 这些样本是否只是“继续通过”，还是因为产品边界变化而被替换
+- 若涉及 unified router，也应说明是否覆盖了 invalid domain_hint 样本
 - 若替换样本，替换理由与保持不变的约束

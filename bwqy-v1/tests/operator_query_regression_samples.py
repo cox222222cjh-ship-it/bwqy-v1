@@ -175,4 +175,12 @@ UNIFIED_SAMPLES: tuple[RegressionSample, ...] = (
         whitelist_path_or_rule="显式 domain_hint 优先于自动路由。",
         stable_behavior="item/quest domain_hint 都必须返回 exact_match 且分别落到 item / quest。",
     ),
+    RegressionSample(
+        key="unified_invalid_domain_hint",
+        query="哥布林的宝物",
+        domain="unified",
+        representative_reason="统一路由此前已显式修复 invalid domain_hint；长期回归应锁住该行为。",
+        whitelist_path_or_rule="非法 domain_hint 只能显式报错，不能静默落到任一主域。",
+        stable_behavior="route_operator_query('哥布林的宝物', domain_hint='world') 返回 ambiguous, domain=None，且 primary_payload 为空。",
+    ),
 )

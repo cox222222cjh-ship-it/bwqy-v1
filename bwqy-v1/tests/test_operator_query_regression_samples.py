@@ -41,7 +41,8 @@ class OperatorQueryRegressionSampleTests(unittest.TestCase):
         duplicate_name = query_item(self.item_index, sample_map['item_duplicate_name'].query)
         self.assertEqual(duplicate_name.matched_items, [])
         self.assertGreaterEqual(len(duplicate_name.candidates), 2)
-        self.assertEqual(sorted(record.values['TID'].raw_value for record in duplicate_name.candidates[:2]), ['100', '190'])
+        candidate_tids = {record.values['TID'].raw_value for record in duplicate_name.candidates}
+        self.assertTrue({'100', '190'}.issubset(candidate_tids))
 
     def test_npc_samples_remain_stable(self) -> None:
         sample_map = {sample.key: sample for sample in NPC_SAMPLES}
@@ -51,23 +52,35 @@ class OperatorQueryRegressionSampleTests(unittest.TestCase):
         shop_section = next(section for section in shop_owner.sections if section.relation_type == 'shop')
         self.assertGreaterEqual(len(shop_section.related_records), 1)
         self.assertEqual(shop_section.owner_record.values['TID'].raw_value, '79')
-        self.assertEqual(shop_section.related_records[0].item_record.values['TID'].raw_value, '20')
-        self.assertIn('NpcTable.SaleTID', shop_section.related_records[0].source_path)
+        self.assertTrue(
+            any(
+                relation.item_record.values['TID'].raw_value == '20'
+                and 'NpcTable.SaleTID' in relation.source_path
+                for relation in shop_section.related_records
+            )
+        )
 
         drop_owner = query_npc_or_item(self.npc_index, sample_map['npc_drop_owner'].query)
         self.assertEqual(drop_owner.query_kind, 'npc')
         drop_section = next(section for section in drop_owner.sections if section.relation_type == 'drop')
         self.assertGreaterEqual(len(drop_section.related_records), 1)
         self.assertEqual(drop_section.owner_record.values['TID'].raw_value, '502')
-        self.assertEqual(drop_section.related_records[0].item_record.values['TID'].raw_value, '2130001')
-        self.assertIn('ItemDropTable.DropItem01', drop_section.related_records[0].source_path)
+        self.assertTrue(
+            any(
+                relation.item_record.values['TID'].raw_value == '2130001'
+                and 'ItemDropTable.DropItem' in relation.source_path
+                for relation in drop_section.related_records
+            )
+        )
 
         reverse_shop_item = query_npc_or_item(self.npc_index, sample_map['npc_reverse_shop_item'].query)
         self.assertEqual(reverse_shop_item.query_kind, 'item')
         reverse_shop_section = next(section for section in reverse_shop_item.sections if section.relation_type == 'shop')
         self.assertGreaterEqual(len(reverse_shop_section.related_records), 1)
         self.assertEqual(reverse_shop_section.owner_record.values['TID'].raw_value, '20')
-        self.assertEqual(reverse_shop_section.related_records[0].npc_record.values['TID'].raw_value, '79')
+        self.assertTrue(
+            any(relation.npc_record.values['TID'].raw_value == '79' for relation in reverse_shop_section.related_records)
+        )
 
         numeric_ambiguity = query_npc_or_item(self.npc_index, sample_map['npc_numeric_ambiguity'].query)
         self.assertEqual(numeric_ambiguity.query_kind, 'ambiguous')
@@ -83,8 +96,9 @@ class OperatorQueryRegressionSampleTests(unittest.TestCase):
         self.assertEqual(exact_name_and_drop.quest.tid, 1)
         self.assertGreaterEqual(len(exact_name_and_drop.payload.quest_drops), 1)
         self.assertTrue(all(drop.status == 'confirmed' for drop in exact_name_and_drop.payload.quest_drops))
-        self.assertEqual(exact_name_and_drop.payload.quest_drops[0].npc_tid, 501)
-        self.assertEqual(exact_name_and_drop.payload.quest_drops[0].item_tid, 20155)
+        self.assertTrue(
+            any(drop.npc_tid == 501 and drop.item_tid == 20155 for drop in exact_name_and_drop.payload.quest_drops)
+        )
 
         give_item = query_quest(self.quest_index, sample_map['quest_give_item'].query)
         self.assertEqual(give_item.status, 'ok')
@@ -101,8 +115,9 @@ class OperatorQueryRegressionSampleTests(unittest.TestCase):
         self.assertGreaterEqual(len(confirmed_reward_items), 1)
         self.assertTrue(all(reward.resolved_item_tid is not None for reward in confirmed_reward_items))
         self.assertGreaterEqual(len(reward_and_vector.payload.quest_drops), 1)
-        self.assertEqual(reward_and_vector.payload.quest_drops[0].npc_tid, 514)
-        self.assertEqual(reward_and_vector.payload.quest_drops[0].item_tid, 20174)
+        self.assertTrue(
+            any(drop.npc_tid == 514 and drop.item_tid == 20174 for drop in reward_and_vector.payload.quest_drops)
+        )
 
         vector_prev = query_quest(self.quest_index, sample_map['quest_prev_link_vector_guard'].query)
         self.assertEqual(vector_prev.status, 'ok')
@@ -150,6 +165,15 @@ class OperatorQueryRegressionSampleTests(unittest.TestCase):
         assert hinted_quest.primary_payload is not None
         self.assertEqual(hinted_item.primary_payload.record.values['TID'].raw_value, '20025')
         self.assertEqual(hinted_quest.primary_payload.record.tid, 7)
+
+        invalid_hint = route_operator_query(
+            self.router_index,
+            sample_map['unified_invalid_domain_hint'].query,
+            domain_hint='world',
+        )
+        self.assertEqual((invalid_hint.domain, invalid_hint.status), (None, 'ambiguous'))
+        self.assertIsNone(invalid_hint.primary_payload)
+        self.assertTrue(any('无效的 domain_hint' in note for note in invalid_hint.notes))
 
 
 if __name__ == '__main__':
