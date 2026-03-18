@@ -125,6 +125,7 @@ result = query_npc_or_item(index, "NPC_NAME_OR_ITEM_NAME")
 - 不做 full-table browser。
 - 不因同名 `TID` 自动联表。
 - `QuestTable.DropTID` 只作补充诊断，不作 quest drop 主事实来源。
+- `PrevQuest`、`NextQuest`、`MissionTID`、`RewardTID`、`DropTID` 属于向量型字段时，Quest v1 会保守处理：`MissionTID` / `RewardTID` 按顺序展开，`PrevQuest` / `NextQuest` 仅保留降阶后的单链接解释并标记待确认。
 - 不默认纳入 `HelpTable`、`TutorialTable`、`BanWordTable`、`Char*`、`QuestCinemaTable`、`QuestSceneTable`、world/map/navigation 表。
 
 示例：

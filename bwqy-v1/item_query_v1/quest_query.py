@@ -171,17 +171,23 @@ def _build_payload(index: QuestQueryIndex, quest_row: dict[str, str]) -> tuple[Q
     notes: list[str] = []
     quest_tid = int(quest_row["TID"])
     give_items = _resolve_give_items(index, quest_row)
-    missions = _resolve_mission(index, quest_row)
+    missions = _resolve_missions(index, quest_row)
     rewards = _resolve_rewards(index, quest_row)
     quest_drops, drop_note = _resolve_quest_drops(index, quest_row)
     if drop_note:
         notes.append(drop_note)
+    prev_quest, prev_note = _resolve_quest_link(index, quest_row, "PrevQuest")
+    next_quest, next_note = _resolve_quest_link(index, quest_row, "NextQuest")
+    if prev_note:
+        notes.append(prev_note)
+    if next_note:
+        notes.append(next_note)
 
     payload = QuestQueryPayload(
         tid=quest_tid,
         name=_quest_name(quest_row) or str(quest_tid),
-        prev_quest=_resolve_quest_link(index, quest_row, "PrevQuest"),
-        next_quest=_resolve_quest_link(index, quest_row, "NextQuest"),
+        prev_quest=prev_quest,
+        next_quest=next_quest,
         give_items=give_items,
         missions=missions,
         rewards=rewards,
@@ -192,14 +198,32 @@ def _build_payload(index: QuestQueryIndex, quest_row: dict[str, str]) -> tuple[Q
     return payload, notes
 
 
-def _resolve_quest_link(index: QuestQueryIndex, quest_row: dict[str, str], field: str) -> QuestLink:
-    raw = quest_row.get(field, "").strip()
-    if not _is_valid_link_id(raw):
-        return QuestLink(tid=0, name=None, status=MISSING)
+def _resolve_quest_link(
+    index: QuestQueryIndex,
+    quest_row: dict[str, str],
+    field: str,
+) -> tuple[QuestLink, str | None]:
+    ids = _parse_vector_ids(quest_row.get(field, ""))
+    if not ids:
+        return QuestLink(tid=0, name=None, status=MISSING), None
+
+    if len(ids) > 1:
+        first = ids[0]
+        linked = index.quest_by_tid.get(first)
+        return (
+            QuestLink(
+                tid=_to_int(first),
+                name=_quest_name(linked) if linked else None,
+                status=PENDING,
+            ),
+            f"{field} 是向量字段；当前 Quest v1 仅保守暴露单链接解释，其余候选待确认。",
+        )
+
+    raw = ids[0]
     linked = index.quest_by_tid.get(raw)
     if not linked:
-        return QuestLink(tid=int(raw), name=None, status=MISSING)
-    return QuestLink(tid=int(raw), name=_quest_name(linked), status=CONFIRMED)
+        return QuestLink(tid=int(raw), name=None, status=MISSING), None
+    return QuestLink(tid=int(raw), name=_quest_name(linked), status=CONFIRMED), None
 
 
 def _resolve_give_items(index: QuestQueryIndex, quest_row: dict[str, str]) -> list[QuestGiveItem]:
@@ -221,53 +245,82 @@ def _resolve_give_items(index: QuestQueryIndex, quest_row: dict[str, str]) -> li
     return results
 
 
-def _resolve_mission(index: QuestQueryIndex, quest_row: dict[str, str]) -> list[QuestMissionRecord]:
-    mission_tid = quest_row.get("MissionTID", "").strip()
-    if not _is_valid_link_id(mission_tid):
-        return []
-    mission_row = index.mission_by_tid.get(mission_tid)
-    if not mission_row:
-        return [QuestMissionRecord(mission_tid=int(mission_tid), fields={}, status=MISSING)]
-    return [QuestMissionRecord(mission_tid=int(mission_tid), fields=mission_row, status=CONFIRMED)]
+def _resolve_missions(index: QuestQueryIndex, quest_row: dict[str, str]) -> list[QuestMissionRecord]:
+    mission_ids = _parse_vector_ids(quest_row.get("MissionTID", ""))
+    records: list[QuestMissionRecord] = []
+    for mission_tid in mission_ids:
+        mission_row = index.mission_by_tid.get(mission_tid)
+        if not mission_row:
+            records.append(
+                QuestMissionRecord(mission_tid=int(mission_tid), fields={}, status=MISSING)
+            )
+            continue
+        records.append(
+            QuestMissionRecord(
+                mission_tid=int(mission_tid),
+                fields=mission_row,
+                status=CONFIRMED,
+            )
+        )
+    return records
 
 
 def _resolve_rewards(index: QuestQueryIndex, quest_row: dict[str, str]) -> list[QuestRewardRecord]:
-    reward_tid = quest_row.get("RewardTID", "").strip()
-    if not _is_valid_link_id(reward_tid):
-        return []
-
-    reward_rows = index.rewards_by_tid.get(reward_tid, [])
-    if not reward_rows:
-        return [QuestRewardRecord(reward_tid=int(reward_tid), type="", value=0, count=0, is_select=False, resolved_item_tid=None, resolved_item_name=None, status=MISSING, note=None)]
-
     records: list[QuestRewardRecord] = []
-    for row in reward_rows:
-        reward_type = row.get("Type", "").strip()
-        value = _to_int(row.get("Value", "0"))
-        item_row = index.items_by_tid.get(str(value)) if reward_type == "1" and value > 0 else None
-        if reward_type == "1" and item_row:
-            status = CONFIRMED
-            resolved_item_tid = value
-            resolved_item_name = item_row.get("LocalName", "").strip() or None
-            note = None
-        else:
-            status = PENDING if reward_type else MISSING
-            resolved_item_tid = None
-            resolved_item_name = None
-            note = "奖励值语义受 Type 影响，当前仅保留原始条目。" if reward_type else None
-        records.append(
-            QuestRewardRecord(
-                reward_tid=_to_int(row.get("TID", reward_tid)),
-                type=reward_type,
-                value=value,
-                count=_to_int(row.get("Count", "0")),
-                is_select=row.get("IsSelect", "0").strip() == "1",
-                resolved_item_tid=resolved_item_tid,
-                resolved_item_name=resolved_item_name,
-                status=status,
-                note=note,
+    reward_ids = _parse_vector_ids(quest_row.get("RewardTID", ""))
+    for reward_tid in reward_ids:
+        reward_rows = index.rewards_by_tid.get(reward_tid, [])
+        if not reward_rows:
+            records.append(
+                QuestRewardRecord(
+                    reward_tid=int(reward_tid),
+                    type="",
+                    value=0,
+                    count=0,
+                    is_select=False,
+                    resolved_item_tid=None,
+                    resolved_item_name=None,
+                    status=MISSING,
+                    note=None,
+                )
             )
-        )
+            continue
+
+        for row in reward_rows:
+            reward_type = row.get("Type", "").strip()
+            value = _to_int(row.get("Value", "0"))
+            item_row = (
+                index.items_by_tid.get(str(value))
+                if reward_type == "1" and value > 0
+                else None
+            )
+            if reward_type == "1" and item_row:
+                status = CONFIRMED
+                resolved_item_tid = value
+                resolved_item_name = item_row.get("LocalName", "").strip() or None
+                note = None
+            else:
+                status = PENDING if reward_type else MISSING
+                resolved_item_tid = None
+                resolved_item_name = None
+                note = (
+                    "奖励值语义受 Type 影响，当前仅保留原始条目。"
+                    if reward_type
+                    else None
+                )
+            records.append(
+                QuestRewardRecord(
+                    reward_tid=_to_int(row.get("TID", reward_tid)),
+                    type=reward_type,
+                    value=value,
+                    count=_to_int(row.get("Count", "0")),
+                    is_select=row.get("IsSelect", "0").strip() == "1",
+                    resolved_item_tid=resolved_item_tid,
+                    resolved_item_name=resolved_item_name,
+                    status=status,
+                    note=note,
+                )
+            )
     return records
 
 
@@ -276,10 +329,14 @@ def _resolve_quest_drops(index: QuestQueryIndex, quest_row: dict[str, str]) -> t
     drop_rows = index.drops_by_quest_tid.get(quest_tid, [])
     note = None
 
-    drop_tid = quest_row.get("DropTID", "").strip()
-    if _is_valid_link_id(drop_tid) and drop_rows:
-        if all(row.get("TID", "").strip() != drop_tid for row in drop_rows):
+    drop_ids = _parse_vector_ids(quest_row.get("DropTID", ""))
+    if drop_ids and drop_rows:
+        if len(drop_ids) > 1:
+            note = "QuestTable.DropTID 是向量字段且仅作诊断信息；Quest v1 仍仅按 QuestDropTable.QuestTID 返回 quest-specific drop。"
+        elif all(row.get("TID", "").strip() not in set(drop_ids) for row in drop_rows):
             note = "QuestTable.DropTID 未作为主事实来源；当前仅按 QuestDropTable.QuestTID 返回 quest-specific drop。"
+    elif len(drop_ids) > 1:
+        note = "QuestTable.DropTID 是向量字段且仅作诊断信息；Quest v1 不将其作为 quest drop 主事实来源。"
 
     records: list[QuestDropRecord] = []
     for row in drop_rows:
@@ -351,6 +408,20 @@ def _to_summary(row: dict[str, str]) -> QuestSummary:
 
 def _is_valid_link_id(value: str) -> bool:
     return bool(value.strip() and value.strip() != "0")
+
+
+def _parse_vector_ids(value: str) -> list[str]:
+    raw = str(value or "").strip()
+    if not raw:
+        return []
+
+    ids: list[str] = []
+    for part in raw.split("|"):
+        candidate = part.strip()
+        if not _is_valid_link_id(candidate):
+            continue
+        ids.append(candidate)
+    return ids
 
 
 def _to_int(value: str) -> int:
