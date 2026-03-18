@@ -9,7 +9,7 @@ ALLOWED_TABLES = {
     "ItemSetAbilityTable": "ItemSetAbilityTable.csv",
 }
 
-CSV_ENCODINGS = ("utf-8", "utf-8-sig", "cp1252", "latin1")
+CSV_ENCODINGS = ("utf-8-sig", "utf-8", "gb18030", "cp1252", "latin1")
 
 
 def resolve_tables_dir(start: Path | None = None) -> Path:
@@ -70,7 +70,9 @@ def load_csv_records(table_name: str, tables_dir: Path) -> list[dict[str, str]]:
     return records
 
 
-def load_allowed_tables(tables_dir: Path | None = None) -> dict[str, list[dict[str, str]]]:
+def load_allowed_tables(
+    tables_dir: Path | None = None,
+) -> dict[str, list[dict[str, str]]]:
     resolved = tables_dir or resolve_tables_dir()
     return {
         table_name: load_csv_records(table_name=table_name, tables_dir=resolved)

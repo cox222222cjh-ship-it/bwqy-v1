@@ -81,13 +81,12 @@ class WebUiTests(unittest.TestCase):
         self.assertTrue(state.no_result)
         self.assertIsNone(state.result)
 
-
     def test_candidate_render_keeps_traceability_and_pending_visible(self) -> None:
         from item_query_v1.web_ui import build_html
 
         state = query_to_page_state(self._build_index(), "DUP")
         html = build_html(state)
-        self.assertIn("trace", html)
+        self.assertIn("来源追踪", html)
         self.assertIn("ItemTable.TID", html)
         self.assertIn("ItemTable.SetTID|AP|DP|BP|CP", html)
         self.assertIn("derived", html)
@@ -98,13 +97,32 @@ class WebUiTests(unittest.TestCase):
 
         state = query_to_page_state(self._build_index(), "100")
         html = build_html(state)
-        self.assertIn("status", html)
-        self.assertIn("source", html)
+        self.assertIn("可信状态", html)
+        self.assertIn("来源", html)
         self.assertIn("pending_confirmation", html)
         self.assertIn("包含 pending_confirmation 字段，请谨慎使用。", html)
 
+    def test_detail_render_localizes_safe_labels_and_keeps_cautious_unknowns(
+        self,
+    ) -> None:
+        from item_query_v1.web_ui import build_html
+
+        state = query_to_page_state(self._build_index(), "100")
+        html = build_html(state)
+        self.assertIn("物品ID", html)
+        self.assertIn("物品名称", html)
+        self.assertIn("英文键", html)
+        self.assertIn("物品描述", html)
+        self.assertIn("Level（待确认含义）", html)
+        self.assertIn("Grade（待确认含义）", html)
+        self.assertIn("direct（直接读取）", html)
+        self.assertIn("derived（推断）", html)
+        self.assertIn("pending_confirmation（待确认）", html)
+
     def test_startup_error_state(self) -> None:
-        app_state = init_app_state(index_builder=lambda: (_ for _ in ()).throw(RuntimeError("boom")))
+        app_state = init_app_state(
+            index_builder=lambda: (_ for _ in ()).throw(RuntimeError("boom"))
+        )
         self.assertIsNotNone(app_state.startup_error)
         self.assertIn("索引加载失败", app_state.startup_error or "")
 

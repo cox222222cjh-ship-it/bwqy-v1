@@ -60,12 +60,12 @@ class CandidateResultModel:
 ResultViewModel = ItemResultPageModel | CandidateResultModel
 
 _BASIC_FIELDS: list[tuple[str, str]] = [
-    ("TID", "TID"),
-    ("LocalName", "LocalName"),
-    ("EngName", "EngName"),
-    ("Level", "Level"),
-    ("Grade", "Grade"),
-    ("LocalDesc", "LocalDesc"),
+    ("TID", "物品ID"),
+    ("LocalName", "物品名称"),
+    ("EngName", "英文键"),
+    ("Level", "Level（待确认含义）"),
+    ("Grade", "Grade（待确认含义）"),
+    ("LocalDesc", "物品描述"),
 ]
 
 _CLASSIFICATION_FIELDS: list[tuple[str, str]] = [
@@ -77,10 +77,14 @@ _CLASSIFICATION_FIELDS: list[tuple[str, str]] = [
 
 def build_result_view_model(raw_result: ItemQueryResult) -> ResultViewModel:
     if raw_result.matched_items:
-        return _build_item_page(raw_result, raw_result.matched_items[0], raw_result.set_chain)
+        return _build_item_page(
+            raw_result, raw_result.matched_items[0], raw_result.set_chain
+        )
 
     candidate_pages = [
-        _build_item_page(raw_result, candidate, {"ItemSetTable": [], "ItemSetAbilityTable": []})
+        _build_item_page(
+            raw_result, candidate, {"ItemSetTable": [], "ItemSetAbilityTable": []}
+        )
         for candidate in raw_result.candidates
     ]
     return CandidateResultModel(
@@ -95,9 +99,14 @@ def _build_item_page(
     item_record: RawRecord,
     set_chain: dict[str, list[RawRecord]],
 ) -> ItemResultPageModel:
-    basic_fields = [_map_existing_field(item_record, key, label) for key, label in _BASIC_FIELDS]
+    basic_fields = [
+        _map_existing_field(item_record, key, label) for key, label in _BASIC_FIELDS
+    ]
 
-    classification_fields = [_map_existing_field(item_record, key, label) for key, label in _CLASSIFICATION_FIELDS]
+    classification_fields = [
+        _map_existing_field(item_record, key, label)
+        for key, label in _CLASSIFICATION_FIELDS
+    ]
     is_equipment = _derive_is_equipment(item_record)
     classification_fields.append(is_equipment)
     classification_fields.append(
@@ -145,8 +154,12 @@ def _build_item_page(
         query=raw_result.query,
         query_type=raw_result.query_type,
         basic_information=SectionModel(name="basic_information", fields=basic_fields),
-        classification=SectionModel(name="classification", fields=classification_fields),
-        source_information=SectionModel(name="source_information", fields=source_fields),
+        classification=SectionModel(
+            name="classification", fields=classification_fields
+        ),
+        source_information=SectionModel(
+            name="source_information", fields=source_fields
+        ),
         trust_status=SectionModel(name="trust_status", fields=trust_fields),
         equipment_chain=equipment_section,
     )
@@ -163,7 +176,7 @@ def _build_equipment_chain_section(
         fields = [
             FieldDisplayItem(
                 key="equipment_chain_state",
-                label="equipment_chain_state",
+                label="装备链路状态",
                 value="不适用",
                 source_table=is_equipment.source_table,
                 source_field=is_equipment.source_field,
@@ -182,7 +195,7 @@ def _build_equipment_chain_section(
         fields = [
             FieldDisplayItem(
                 key="set_chain_rows",
-                label="set_chain_rows",
+                label="套装链路记录数",
                 value=str(len(set_records)),
                 source_table="ItemSetTable",
                 source_field="TID|ItemTID|SetAbilityTID",
@@ -190,7 +203,7 @@ def _build_equipment_chain_section(
             ),
             FieldDisplayItem(
                 key="set_ability_rows",
-                label="set_ability_rows",
+                label="套装效果记录数",
                 value=str(len(set_ability_records)),
                 source_table="ItemSetAbilityTable",
                 source_field="TID|ReqTotal|LocalDesc",
@@ -207,7 +220,7 @@ def _build_equipment_chain_section(
     fields = [
         FieldDisplayItem(
             key="equipment_chain_state",
-            label="equipment_chain_state",
+            label="装备链路状态",
             value="无可用套装链路",
             source_table="ItemSetTable",
             source_field="TID|ItemTID|SetAbilityTID",
@@ -223,7 +236,9 @@ def _build_equipment_chain_section(
     )
 
 
-def _map_existing_field(item_record: RawRecord, key: str, label: str) -> FieldDisplayItem:
+def _map_existing_field(
+    item_record: RawRecord, key: str, label: str
+) -> FieldDisplayItem:
     trace = item_record.values.get(key) or _missing_trace(key)
     return FieldDisplayItem(
         key=key,
@@ -249,7 +264,9 @@ def _missing_trace(field: str) -> TraceValue:
 def _derive_is_equipment(item_record: RawRecord) -> FieldDisplayItem:
     set_tid = _raw(item_record, "SetTID")
     stat_fields = ["AP", "DP", "BP", "CP"]
-    has_stat = any(_is_nonzero_numeric(_raw(item_record, field)) for field in stat_fields)
+    has_stat = any(
+        _is_nonzero_numeric(_raw(item_record, field)) for field in stat_fields
+    )
     has_set = _is_positive_integer(set_tid)
 
     if has_set or has_stat:
@@ -259,7 +276,7 @@ def _derive_is_equipment(item_record: RawRecord) -> FieldDisplayItem:
 
     return FieldDisplayItem(
         key="is_equipment",
-        label="is_equipment",
+        label="是否装备（推断）",
         value=value,
         source_table="ItemTable",
         source_field="SetTID|AP|DP|BP|CP",

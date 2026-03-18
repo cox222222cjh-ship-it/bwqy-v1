@@ -136,16 +136,19 @@ class ItemQueryV1AcceptanceTests(unittest.TestCase):
         self.assertIn("装备链路（state=not_applicable）", html)
         self.assertIn("不适用", html)
 
-    def test_acceptance_pending_confirmation_is_visible_in_rendered_output(self) -> None:
+    def test_acceptance_pending_confirmation_is_visible_in_rendered_output(
+        self,
+    ) -> None:
         state = query_to_page_state(self._build_index(), "500")
         html = build_html(state)
 
-        self.assertIn("pending_confirmation", html)
+        self.assertIn("pending_confirmation（待确认）", html)
         self.assertIn("包含 pending_confirmation 字段，请谨慎使用。", html)
         self.assertIn("待确认", html)
 
-
-    def test_acceptance_single_item_displayed_fields_have_source_and_status(self) -> None:
+    def test_acceptance_single_item_displayed_fields_have_source_and_status(
+        self,
+    ) -> None:
         state = query_to_page_state(self._build_index(), "500")
         assert isinstance(state.result, ItemResultPageModel)
 
