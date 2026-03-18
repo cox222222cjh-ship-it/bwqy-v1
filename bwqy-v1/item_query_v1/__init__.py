@@ -1,5 +1,6 @@
 from .query_service import ItemQueryIndex, build_item_query_index, query_item
 from .npc_shop_drop_query import build_npc_shop_drop_index, query_npc_or_item
+from .quest_query import build_quest_query_index, query_quest
 from .result_view_model import (
     CandidateResultModel,
     FieldDisplayItem,
@@ -19,4 +20,6 @@ __all__ = [
     "build_result_view_model",
     "build_npc_shop_drop_index",
     "query_npc_or_item",
+    "build_quest_query_index",
+    "query_quest",
 ]
