@@ -89,3 +89,50 @@ from item_query_v1.npc_shop_drop_query import build_npc_shop_drop_index, query_n
 index = build_npc_shop_drop_index()
 result = query_npc_or_item(index, "NPC_NAME_OR_ITEM_NAME")
 ```
+
+
+## Quest Query v1（最小运营闭环）
+
+当前仓库另外提供了一个**代码级最小 Quest 查询能力**，严格遵循 `build-quest-query-v1` 的白名单边界。
+
+支持的输入：
+
+- Quest TID
+- Quest `LocalTitle`
+
+稳定输出结构覆盖：
+
+- exact quest match
+- name search `ambiguous` candidates
+- related items / related NPCs
+- prev / next quest links
+- not found / missing / pending confirmation
+
+仅包含的表与关系：
+
+- 顶层入口：`QuestTable`
+- supporting relation：`QuestMissionTable`、`QuestRewardTable`、`QuestDropTable`
+- controlled interpretation：`ItemTable`、`NpcTable`
+- 高置信关系：
+  - `QuestTable.MissionTID -> QuestMissionTable.TID`
+  - `QuestTable.RewardTID -> QuestRewardTable.TID`
+  - `QuestDropTable.QuestTID = QuestTable.TID`
+  - `QuestTable.GiveItem1/2 -> ItemTable.TID`
+  - `QuestTable.PrevQuest/NextQuest -> QuestTable.TID`
+
+明确限制：
+
+- 不做 full-table browser。
+- 不因同名 `TID` 自动联表。
+- `QuestTable.DropTID` 只作补充诊断，不作 quest drop 主事实来源。
+- `PrevQuest`、`NextQuest`、`MissionTID`、`RewardTID`、`DropTID` 属于向量型字段时，Quest v1 会保守处理：`MissionTID` / `RewardTID` 按顺序展开，`PrevQuest` / `NextQuest` 仅保留降阶后的单链接解释并标记待确认。
+- 不默认纳入 `HelpTable`、`TutorialTable`、`BanWordTable`、`Char*`、`QuestCinemaTable`、`QuestSceneTable`、world/map/navigation 表。
+
+示例：
+
+```python
+from item_query_v1.quest_query import build_quest_query_index, query_quest
+
+index = build_quest_query_index()
+result = query_quest(index, "1")
+```
