@@ -4,24 +4,24 @@ from dataclasses import dataclass
 from typing import Literal
 
 from .npc_shop_drop_query import build_npc_shop_drop_index, query_npc_or_item
-from .query_service import build_item_query_index, query_item
+from .query_service import ItemQueryIndex, build_item_query_index, query_item
 from .quest_query import (
     QuestQueryIndex,
     QuestQueryResult,
     build_quest_query_index,
     query_quest,
 )
-from .query_service import ItemQueryIndex
 from .types import ItemQueryResult, NpcShopDropQueryResult
 
 UnifiedDomain = Literal["item", "npc", "quest"]
 UnifiedStatus = Literal["exact_match", "ambiguous", "not_found"]
+_ALLOWED_DOMAIN_HINTS = {"item", "npc", "quest"}
 
 
 @dataclass(frozen=True)
 class UnifiedQueryRequest:
     raw_query: str
-    domain_hint: UnifiedDomain | None = None
+    domain_hint: str | None = None
 
 
 @dataclass(frozen=True)
@@ -57,12 +57,34 @@ def build_unified_query_router_index() -> UnifiedQueryRouterIndex:
 def route_operator_query(
     index: UnifiedQueryRouterIndex,
     raw_query: str,
-    domain_hint: UnifiedDomain | None = None,
+    domain_hint: str | None = None,
 ) -> UnifiedQueryResponse:
     request = UnifiedQueryRequest(raw_query=raw_query, domain_hint=domain_hint)
+    validation_error = _validate_domain_hint(request)
+    if validation_error is not None:
+        return validation_error
+
     if request.domain_hint is not None:
         return _route_with_domain_hint(index, request)
     return _route_without_domain_hint(index, request)
+
+
+def _validate_domain_hint(request: UnifiedQueryRequest) -> UnifiedQueryResponse | None:
+    if request.domain_hint is None:
+        return None
+
+    if request.domain_hint in _ALLOWED_DOMAIN_HINTS:
+        return None
+
+    return UnifiedQueryResponse(
+        query=request.raw_query.strip(),
+        domain=None,
+        status="ambiguous",
+        primary_payload=None,
+        notes=[
+            "无效的 domain_hint；仅支持 item、npc、quest。",
+        ],
+    )
 
 
 def _route_with_domain_hint(
@@ -81,28 +103,20 @@ def _route_without_domain_hint(
     request: UnifiedQueryRequest,
 ) -> UnifiedQueryResponse:
     q = request.raw_query.strip()
-    item_result = query_item(index.item_index, q)
-    npc_result = query_npc_or_item(index.npc_index, q)
-    quest_result = query_quest(index.quest_index, q)
+    item_response = _normalize_item_result(query_item(index.item_index, q))
+    npc_response = _normalize_npc_result(query_npc_or_item(index.npc_index, q))
+    quest_response = _normalize_quest_result(query_quest(index.quest_index, q))
 
-    candidates: list[UnifiedQueryResponse] = []
-    candidate_notes: list[str] = []
-
-    item_response = _normalize_item_result(item_result)
-    if item_response.status != "not_found":
-        candidates.append(item_response)
-
-    npc_response = _normalize_npc_result(npc_result)
-    if npc_response.status == "ambiguous":
+    if npc_response.status == "ambiguous" and npc_response.domain is None:
         return npc_response
-    if npc_response.status != "not_found":
-        candidates.append(npc_response)
 
-    quest_response = _normalize_quest_result(quest_result)
-    if quest_response.status != "not_found":
-        candidates.append(quest_response)
+    matched_by_domain: dict[UnifiedDomain, list[UnifiedQueryResponse]] = {}
+    for response in (item_response, npc_response, quest_response):
+        if response.status == "not_found" or response.domain is None:
+            continue
+        matched_by_domain.setdefault(response.domain, []).append(response)
 
-    if not candidates:
+    if not matched_by_domain:
         return UnifiedQueryResponse(
             query=q,
             domain=None,
@@ -111,24 +125,51 @@ def _route_without_domain_hint(
             notes=["未在 Item / NPC / Quest 白名单域中找到匹配结果。"],
         )
 
-    exact_candidates = [candidate for candidate in candidates if candidate.status == "exact_match"]
-    if len(exact_candidates) == 1:
-        return exact_candidates[0]
+    exact_by_domain = {
+        domain: _pick_preferred_response(responses, "exact_match")
+        for domain, responses in matched_by_domain.items()
+        if any(response.status == "exact_match" for response in responses)
+    }
+    ambiguous_by_domain = {
+        domain: _pick_preferred_response(responses, "ambiguous")
+        for domain, responses in matched_by_domain.items()
+        if any(response.status == "ambiguous" for response in responses)
+    }
 
-    domains = [candidate.domain for candidate in exact_candidates if candidate.domain]
-    if domains:
-        candidate_notes.append(
-            "该查询同时命中多个运营主域；请显式指定 domain_hint=item|npc|quest 以消除歧义。"
-        )
-        candidate_notes.append(f"候选域: {', '.join(domains)}")
+    if len(exact_by_domain) == 1 and not ambiguous_by_domain:
+        return next(iter(exact_by_domain.values()))
 
+    if not exact_by_domain and len(ambiguous_by_domain) == 1:
+        return next(iter(ambiguous_by_domain.values()))
+
+    candidate_domains = sorted({*exact_by_domain.keys(), *ambiguous_by_domain.keys()})
     return UnifiedQueryResponse(
         query=q,
         domain=None,
         status="ambiguous",
         primary_payload=None,
-        notes=candidate_notes,
+        notes=[
+            "该查询同时命中多个运营主域；请显式指定 domain_hint=item|npc|quest 以消除歧义。",
+            f"候选域: {', '.join(candidate_domains)}",
+        ],
     )
+
+
+def _pick_preferred_response(
+    responses: list[UnifiedQueryResponse],
+    status: UnifiedStatus,
+) -> UnifiedQueryResponse:
+    filtered = [response for response in responses if response.status == status]
+    for response in filtered:
+        if response.domain == "item" and _is_canonical_item_response(response):
+            return response
+    return filtered[0]
+
+
+def _is_canonical_item_response(response: UnifiedQueryResponse) -> bool:
+    if response.primary_payload is None or response.primary_payload.result is None:
+        return False
+    return isinstance(response.primary_payload.result, ItemQueryResult)
 
 
 def _normalize_item_result(result: ItemQueryResult) -> UnifiedQueryResponse:

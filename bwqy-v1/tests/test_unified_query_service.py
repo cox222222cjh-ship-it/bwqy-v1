@@ -8,8 +8,8 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from item_query_v1.quest_query import QuestQueryIndex
-from item_query_v1.query_service import ItemQueryIndex
+from item_query_v1.query_service import ItemQueryIndex, ItemQueryResult
+from item_query_v1.quest_query import QuestQueryIndex, QuestQueryResult
 from item_query_v1.unified_query_service import (
     UnifiedQueryRouterIndex,
     route_operator_query,
@@ -114,10 +114,45 @@ class UnifiedQueryServiceTests(unittest.TestCase):
             "RewardTID": "0",
             "DropTID": "0",
         }
+        quest_dup_a = {
+            "TID": "302",
+            "LocalTitle": "QUEST_DUP",
+            "PrevQuest": "0",
+            "NextQuest": "0",
+            "GiveItem1": "0",
+            "GiveItemCnt1": "0",
+            "GiveItem2": "0",
+            "GiveItemCnt2": "0",
+            "MissionTID": "0",
+            "RewardTID": "0",
+            "DropTID": "0",
+        }
+        quest_dup_b = {
+            "TID": "303",
+            "LocalTitle": "QUEST_DUP",
+            "PrevQuest": "0",
+            "NextQuest": "0",
+            "GiveItem1": "0",
+            "GiveItemCnt1": "0",
+            "GiveItem2": "0",
+            "GiveItemCnt2": "0",
+            "MissionTID": "0",
+            "RewardTID": "0",
+            "DropTID": "0",
+        }
 
         quest_index = QuestQueryIndex(
-            quest_by_tid={"300": quest_main, "301": quest_shared},
-            quests_by_name={"QUEST_EXACT": [quest_main], "QUEST_SHARED": [quest_shared]},
+            quest_by_tid={
+                "300": quest_main,
+                "301": quest_shared,
+                "302": quest_dup_a,
+                "303": quest_dup_b,
+            },
+            quests_by_name={
+                "QUEST_EXACT": [quest_main],
+                "QUEST_SHARED": [quest_shared],
+                "QUEST_DUP": [quest_dup_a, quest_dup_b],
+            },
             mission_by_tid={},
             rewards_by_tid={},
             drops_by_quest_tid={},
@@ -137,6 +172,15 @@ class UnifiedQueryServiceTests(unittest.TestCase):
         self.assertEqual(result.domain, "item")
         self.assertEqual(result.status, "exact_match")
         assert result.primary_payload is not None
+        self.assertEqual(result.primary_payload.record.values["TID"].raw_value, "100")
+
+    def test_no_hint_normal_item_lookup_prefers_canonical_item_domain(self) -> None:
+        result = route_operator_query(self._build_router_index(), "ITEM_EXACT")
+
+        self.assertEqual(result.domain, "item")
+        self.assertEqual(result.status, "exact_match")
+        assert result.primary_payload is not None
+        self.assertIsInstance(result.primary_payload.result, ItemQueryResult)
         self.assertEqual(result.primary_payload.record.values["TID"].raw_value, "100")
 
     def test_npc_exact_lookup_returns_normalized_npc_envelope(self) -> None:
@@ -161,6 +205,34 @@ class UnifiedQueryServiceTests(unittest.TestCase):
         self.assertIsNone(result.domain)
         self.assertEqual(result.status, "ambiguous")
         self.assertTrue(any("同时命中 NPC TID 与 Item TID" in note for note in result.notes))
+
+    def test_no_hint_item_domain_ambiguity_preserves_payload_and_candidates(self) -> None:
+        result = route_operator_query(self._build_router_index(), "ITEM_DUP")
+
+        self.assertEqual(result.domain, "item")
+        self.assertEqual(result.status, "ambiguous")
+        self.assertIsNotNone(result.primary_payload)
+        assert result.primary_payload is not None
+        self.assertIsInstance(result.primary_payload.result, ItemQueryResult)
+        self.assertEqual(len(result.primary_payload.result.candidates), 2)
+
+    def test_no_hint_quest_domain_ambiguity_preserves_payload_and_candidates(self) -> None:
+        result = route_operator_query(self._build_router_index(), "QUEST_DUP")
+
+        self.assertEqual(result.domain, "quest")
+        self.assertEqual(result.status, "ambiguous")
+        self.assertIsNotNone(result.primary_payload)
+        assert result.primary_payload is not None
+        self.assertIsInstance(result.primary_payload.result, QuestQueryResult)
+        self.assertEqual(len(result.primary_payload.result.candidates), 2)
+
+    def test_invalid_domain_hint_is_handled_explicitly(self) -> None:
+        result = route_operator_query(self._build_router_index(), "ITEM_EXACT", domain_hint="world")
+
+        self.assertIsNone(result.domain)
+        self.assertEqual(result.status, "ambiguous")
+        self.assertIsNone(result.primary_payload)
+        self.assertTrue(any("无效的 domain_hint" in note for note in result.notes))
 
     def test_not_found_returns_stable_envelope(self) -> None:
         result = route_operator_query(self._build_router_index(), "MISSING_ENTRY")
