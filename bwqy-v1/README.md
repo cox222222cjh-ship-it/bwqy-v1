@@ -45,6 +45,55 @@ python -m item_query_v1.web_ui
 ```bash
 python -m unittest discover -s tests
 ```
+
+
+## Unified Operator Query Backend（最小统一后端入口）
+
+当前仓库已提供一个**只读统一路由层**，用于把 Item / NPC / Quest 三个既有查询域收敛到一个稳定后端入口，便于后续 CLI / Web 集成。
+
+入口能力：
+
+- 接受一个原始查询字符串 `raw_query`
+- 可选接受 `domain_hint`：`item` / `npc` / `quest`
+- 在未提供 `domain_hint` 时，只在既有白名单域内做最小路由判断
+- 输出稳定规范化 envelope：
+  - `domain`
+  - `status`
+  - `primary_payload`
+  - `notes`
+
+规范化状态语义：
+
+- `exact_match`：唯一稳定命中一个域
+- `ambiguous`：命中冲突，或现有域逻辑要求显式细化
+- `not_found`：三大白名单域都未命中
+
+当前歧义规则：
+
+- 纯数字若同时命中 `NpcTable.TID` 与 `ItemTable.TID`，直接返回 `ambiguous`
+- 名称若跨 Item / Quest 等多个主域同时稳定命中，也返回 `ambiguous`
+- 若某一域自身已返回多候选（例如 item 重名），统一层保留该域的歧义状态，不替该域做低置信猜测
+
+当前统一层**不会**做的事情：
+
+- 不做 full-table scanning 作为产品策略
+- 不做 same-name `TID` 自动联表
+- 不做低置信关系推断
+- 不扩展 world / map / navigation 域
+- 不改变现有 item / npc / quest 领域内部白名单边界
+
+示例：
+
+```python
+from item_query_v1.unified_query_service import (
+    build_unified_query_router_index,
+    route_operator_query,
+)
+
+index = build_unified_query_router_index()
+result = route_operator_query(index, "QUEST_EXACT")
+```
+
 ## 收口说明
 
 - 详见 `docs/v1-closure.md`，用于记录本次 v1 最终核验、已知限制与后续变更边界。
