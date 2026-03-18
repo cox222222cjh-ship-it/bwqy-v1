@@ -45,3 +45,7 @@ python -m item_query_v1.web_ui
 ```bash
 python -m unittest discover -s tests
 ```
+## 收口说明
+
+- 详见 `docs/v1-closure.md`，用于记录本次 v1 最终核验、已知限制与后续变更边界。
+
